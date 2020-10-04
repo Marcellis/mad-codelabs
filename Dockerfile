@@ -15,7 +15,7 @@ RUN apk add --update git nodejs npm make python gcc g++ && \
 WORKDIR /app
 
 # Hacky line to clear cache, to force clone of web app repo
-RUN echo "$CACHEBUST"
+#RUN echo "$CACHEBUST"
 RUN git clone https://github.com/pmeijer-hva/mad-codelabs-site.git mad-codelabs-site
 WORKDIR /app/mad-codelabs-site
 
