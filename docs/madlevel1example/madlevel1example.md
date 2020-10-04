@@ -21,6 +21,7 @@ Here is an example image of another Codelab that I created:
 
 ### Resources
 * test hook
+* test hok
 * test hook
 * The markdown for this codelab is located here: [codelab.md](https://raw.githubusercontent.com/SolaceDev/solace-dev-codelabs/master/markdown/codelab-4-codelab/codelab-4-codelab.md)
 * [Google Codelabs Tools Github](https://github.com/googlecodelabs/tools) - The repo that contains the claat tool we'll be using today
