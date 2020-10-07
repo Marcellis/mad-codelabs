@@ -7,7 +7,6 @@ COPY --from=ClaatSetup /go/bin/claat /claat
 COPY docs/ input/
 RUN /claat export -o output input/**/*.md
 
-
 FROM alpine:3.10 as AppCompiler
 RUN apk add --update git nodejs npm make python gcc g++ && \
     npm install -g gulp-cli
@@ -15,7 +14,7 @@ RUN apk add --update git nodejs npm make python gcc g++ && \
 WORKDIR /app
 
 # Hacky line to clear cache, to force clone of web app repo
-#RUN echo "$CACHEBUST"
+RUN echo "$CACHEBUST"
 RUN git clone https://github.com/pmeijer-hva/mad-codelabs-site.git mad-codelabs-site
 WORKDIR /app/mad-codelabs-site
 
