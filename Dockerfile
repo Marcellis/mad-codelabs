@@ -13,6 +13,8 @@ RUN apk add --update git nodejs npm make python gcc g++ && \
 
 WORKDIR /app
 
+ADD https://api.github.com/repos/pmeijer-hva/mad-codelabs-site/git/refs/heads/main version.json
+
 RUN git clone https://github.com/pmeijer-hva/mad-codelabs-site.git mad-codelabs-site
 WORKDIR /app/mad-codelabs-site
 
@@ -30,8 +32,6 @@ WORKDIR /app/mad-codelabs-site/dist
 RUN rm codelabs
 COPY --from=ClaatExporter /app/output codelabs/
 
-
-#CMD gulp serve
 FROM caddy:alpine as Deployment
 WORKDIR /app
 COPY --from=AppCompiler /app/mad-codelabs-site/dist/ .
