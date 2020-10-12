@@ -1,7 +1,7 @@
 author: HvA
 summary: Mad Level 1 Example
 id: level1-example
-categories: apps
+categories: Level 1,Apps
 status: Published
 feedback link: https://github.com/SolaceDev/solace-dev-codelabs/tree/master/markdown/codelab-4-codelab
 analytics account: UA-3921398-10

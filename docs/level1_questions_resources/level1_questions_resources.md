@@ -1,7 +1,7 @@
 author: HvA
 summary: MAD Level 1 - Questions & Resources
 id: level1-questions-resources
-categories: questions_resources
+categories: Level 1, Questions & Resources
 status: Published
 feedback link: https://github.com/SolaceDev/solace-dev-codelabs/tree/master/markdown/codelab-4-codelab
 analytics account: UA-3921398-10

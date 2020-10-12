@@ -1,7 +1,8 @@
 author: HvA
 summary: Tools
 id: tools
-categories: manuals
+categories: docs
+tags: manuals
 status: Published
 feedback link: https://github.com/SolaceDev/solace-dev-codelabs/tree/master/markdown/codelab-4-codelab
 analytics account: UA-3921398-10
