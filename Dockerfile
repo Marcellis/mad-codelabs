@@ -13,8 +13,8 @@ RUN apk add --update git nodejs npm make python gcc g++ && \
 
 WORKDIR /app
 
+# against caching when there is a new commit
 ADD https://api.github.com/repos/pmeijer-hva/mad-codelabs-site/git/refs/heads/main version.json
-
 RUN git clone https://github.com/pmeijer-hva/mad-codelabs-site.git mad-codelabs-site
 WORKDIR /app/mad-codelabs-site
 
