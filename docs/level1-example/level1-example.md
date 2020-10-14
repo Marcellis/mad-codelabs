@@ -1,0 +1,238 @@
+author: HvA
+summary: Mad Level 1 Example
+id: level1-example
+categories: Apps
+tags: apps
+status: Published
+feedback link: www.hva.nl
+analytics account: UA-3921398-10
+
+# MAD Level 1 - Example
+
+## Overview
+
+### Requirements
+
+The client needs a simple quiz that presents a picture and asks the user what kind of animal is displayed.
+
+### Solution
+
+<img src="assets/level1example.gif" width="265" height="450"/><br>
+
+Below you will find the necessary steps to build this app. If you encounter problems you
+can always check [Github](https://github.com/Marcellis/MadLevel1Example) where you can find the whole solution.
+
+**Resources:**
+* For this example, a video recording is available.
+In the recording, an expert performs the steps below. The recording can be found here:
+[Mad level 1 Example video recording](https://www.youtube.com/watch?v=hzxYwad7cWw&feature=youtu.be)
+
+## Create a new project
+Duration: 0:30:00  
+
+### Android Studio
+
+Firstly, download and install [Android Studio](https://developer.android.com/studio)  
+
+Once you have successfully downloaded and installed Android Studio you need to "Start a new Project":
+
+1. Select the ‘Empty Activity’
+2. Name the ‘MadLevel1Example’
+3. Choose language ‘Kotlin’
+4. Choose API 23
+5. Press finish getting started.
+
+
+### Emulator
+
+The app needs to run either on an [emulator](https://developer.android.com/studio/run/emulator.html) or a real device. It is preferred to use a real device. To use a real device you will need to attach the device to your computer and configure the device for Android development. Instructions for this can be found [here](https://developer.android.com/studio/debug/dev-options).
+This is the best option if you do not have a high spec machine to develop your code.
+The emulator can be very slow but is a good option if you have a fast machine or don't have an Android device.
+
+Positive
+: Run the app to validate that the emulator and the Android SDK are working properly
+
+### Adding assets to the project
+
+We will need to add an image to the app. You can find it [here](https://docs.google.com/uc?export=download&id=1_y5IhZQpKWl3rfybf47ugyYEDbYxCpIz). 
+Download the zip file and extract the image. Images need to be stored in a specific place. 
+In your project expand the ``res`` directory (resources) and then right-click on drawable inside res. 
+On right-clicking you will see ```'Reveal in Finder'```. Click on 'Reveal in Finder' and 
+then drag or simply copy your downloaded image into the drawable folder (not into ``drawable-v24``).
+
+## Build the layout
+
+### WIP
+Duration: 0:60:00
+
+<img src="assets/level1example.gif" width="130" height="225"/><br>
+
+In `activity_main.xml`, we will see our first widget: a `TextView`. This widget is used to display text.
+
+On the top right in Android Studio you have three options to view the properties of everything in the layout.
+It can either be visually or textual or a combination. Try it out!
+
+<img src="assets/attributes.png"/><br>
+
+You can constrain the top, bottom, left, and right of a view to the top, bottom, left, and right of 
+widgets in a so called `ConstraintLayout`.
+
+For example in text mode, if you look at the TextView you can see it is "constrained" through the following XML attributes:
+
+``` xml
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintLeft_toLeftOf="parent"
+app:layout_constraintRight_toRightOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+`````
+
+For now switch back to the visual mode and look for the `Attributes` area. 
+Try to change to `text` attribute of the `TextView` to:
+
+`What kind of animal is this?`.  
+
+Negative
+: This could be hard-coded in as an attribute but this is not the correct way of doing it!
+
+Then try to constrain the `TextView` so that it is positioned like the screenshot we saw earlier
+     
+<img src="assets/constraintlayout.png"/><br>
+
+Positive
+: Widgets can be identified by ID's. Using these ID's we can later reference the widgets in the 
+Activity class. We use a convention of prefixing the id with the type widget followed by the 
+thing the widget represents. 
+
+The second widget is an `ImageView` which can show an Image. The `src` is set to 
+`@drawable/image1` which means the ImageView will display this image. 
+Constrain the image to the start, end of the parent and the bottom of the `TextView`.  
+
+The third widget is an `EditText`(input field). This `EditText` is constrained to 
+the start and bottom of the parent. Constrain the imageview to the top of the EditText. 
+`id` is `etAnswer`.
+
+The last widget is a `Button`. Constrain the button to the end and bottom of the parent. 
+The end of the EditText is constrained to the start of the Button. Button has been given the 
+id `btnConfirm`.
+
+Positive
+: Struggling with your first layout? Check out the solution of this [XML file.](https://github.com/Marcellis/MadLevel1Example)
+
+### strings.xml
+
+There are some notifications about hardcoded strings. Solve these errors by replacing the harcoded strings
+with reference to the `string.xml` file:
+
+``` xml
+<string name="giraffe">Giraffe</string>
+<string name="correct">Correct!</string>
+<string name="incorrect">Incorrect, the correct answer is Giraffe!</string>
+```
+
+Then you can reference a key from this file like this: `R.string.giraffe`.
+
+## Building the Activity
+Duration: 0:30:00
+
+### Enable view binding
+
+The first two levels in this course make use of View Binding. To enable View Binding in the project, change the following in the ‘app/build.gradle’ file.
+
+```bash
+android {
+    ...
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+```
+
+After this change, don’t forget to select “Sync Now”.
+
+### The `onCreate(..)` Method
+
+Wire up the checkAnswer method to the Button widget by setting an OnClickListener to it.
+
+``` kotlin
+
+private lateinit var binding: ActivityMainBinding
+
+override fun onCreate(savedInstanceState: Bundle?) {
+   super.onCreate(savedInstanceState)
+   binding = ActivityMainBinding.inflate(layoutInflater) 
+   setContentView(binding.root) // Sets the activity layout resource file. 
+
+   // Using the id given in the layout file you can access the component.
+   // Set an action when the user clicks on the confirm button.
+   binding.btnConfirm.setOnClickListener {
+       checkAnswer()
+   }
+}
+```
+
+The `onCreate` method is the method that is called when an `Activity` is created (started). 
+Here you need to declare the initializations for the activity. In the generated `MainActivity` 
+class the onCreate method is already overridden. The connection with the layout file is 
+also made using setContentView. 
+
+The submit button needs an `onClickListener` to detect when a user clicks the 
+button and to define what to do when a user has clicked the button. Here the 
+`checkAnswer` method is called when the button is clicked.
+
+The binding object declared above the `onCreate` method refers to a class that is 
+automatically generated when using `View Binding`. This class is generated when View Binding 
+is enabled and the layout file contains a context linking the layout file with its accompanying class.
+This generated class contains a mapping of all the variables with an id that are defined in the 
+layout file.
+
+
+### Checking user input
+
+Create a method called `checkAnswer`
+- When the text in the EditText equals the word “giraffe” a `Toast` message is displayed 
+informing the user they are correct.
+- When the text in the EditText does not equals the word “giraffe” a Toast message is displayed
+ informing the user they are incorrect.
+ 
+``` kotlin
+/**
+* Check if the submitted answer is correct.
+*/
+private fun checkAnswer() {
+   val answer = binding.etAnswer.text.toString()
+
+   // When the answer equals "giraffe" then display a correct message using a toast message.
+   // Otherwise display an incorrect message.
+   if (answer == getString(R.string.giraffe)) {
+       Toast.makeText(this, getString(R.string.correct), Toast.LENGTH_LONG).show()
+   } else {
+       Toast.makeText(this, getString(R.string.incorrect), Toast.LENGTH_LONG).show()
+   }
+} 
+```
+
+In Kotlin, methods are defined using the `fun` keyword. As with the variables, the return type is 
+defined using the `:` after the method. The default return type is `Unit` which corresponds 
+to `void` in Java. 
+
+In Kotlin variables are created using either val or var.
+- `val`: indicates that the variable is immutable (final)
+- `var`: indicates that the variable is mutable (can be changed)
+
+A widget is referenced in Kotlin using the binding object and the ID we gave the widget in the 
+layout file. The meaning of the binding object will be further explained in the next section.
+A variable of type `val` is made which contains the current text from the `EditText` widget.
+
+The method getString is used to retrieve a `String` from the `strings.xml` resource file from an 
+`Activity`. 
+
+A `Toast` message is made using `Toast.makeText` using the `Context` (the Activity), 
+a `String` for the message and a Length.
+
+## Pushing to Github!
+
+Per level there are three apps, push all apps to Github when you are done. Always make sure to make 
+multiple commits!
+
+See this [link](https://medium.com/code-yoga/how-to-link-android-studio-with-github-312037a13b99) on how to use git with Android Studio
