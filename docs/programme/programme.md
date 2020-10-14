@@ -11,8 +11,3 @@ analytics account: UA-3921398-10
 
 ## Programme
 
-| weeknr 	| week from 	| topics  	| deadline 	|
-|--------	|-----------	|---------	|----------	|
-| 1      	|           	| Level 1 	|          	|
-|        	|           	|         	|          	|
-|        	|           	|         	|          	|

@@ -62,7 +62,6 @@ then drag or simply copy your downloaded image into the drawable folder (not int
 
 ## Build the layout
 
-### WIP
 Duration: 0:60:00
 
 <img src="assets/level1example.gif" width="130" height="225"/><br>
@@ -84,7 +83,7 @@ app:layout_constraintBottom_toBottomOf="parent"
 app:layout_constraintLeft_toLeftOf="parent"
 app:layout_constraintRight_toRightOf="parent"
 app:layout_constraintTop_toTopOf="parent"
-`````
+```
 
 For now switch back to the visual mode and look for the `Attributes` area. 
 Try to change to `text` attribute of the `TextView` to:
@@ -232,7 +231,10 @@ a `String` for the message and a Length.
 
 ## Pushing to Github!
 
-Per level there are three apps, push all apps to Github when you are done. Always make sure to make 
-multiple commits!
+Congratulations🎉, you completed your first app for this level!
 
-See this [link](https://medium.com/code-yoga/how-to-link-android-studio-with-github-312037a13b99) on how to use git with Android Studio
+Per level there are three apps, once your done with an app push it to **it's own** Github repository. When you do all
+the levels you'll end up 21 repositories with 21 apps!
+
+Positive
+: See this [link](https://medium.com/code-yoga/how-to-link-android-studio-with-github-312037a13b99) on how to use git with Android Studio
