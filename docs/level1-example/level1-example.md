@@ -63,8 +63,9 @@ then drag or simply copy your downloaded image into the drawable folder (not int
 
 Duration: 0:60:00
 
-<img src="assets/level1example.gif" width="130" height="225"/><img src="assets/project_structure.png" width="130" height="225"/><br>
-<br>
+<img src="assets/level1example.gif" width="150" height="275"/><br><br>
+
+<img src="assets/project_structure.png"/>
 
 In `activity_main.xml`, we will see our first widget: a `TextView`. This widget is used to display text.
 
@@ -88,15 +89,10 @@ app:layout_constraintTop_toTopOf="parent"
 For now switch back to the visual mode and look for the `Attributes` area. 
 Try to change to `text` attribute of the `TextView` to:
 
-`What kind of animal is this?`.  
-
-Positive
-: Widgets can be identified by ID's. Using these ID's we can later reference the widgets in the 
-Activity class. We use a convention of prefixing the id with the type widget followed by the 
-thing the widget represents. 
+`What kind of animal is this?`
 
 Negative
-: This could be hard-coded in as an attribute but this is not the correct way of doing it!
+: For now this is hard-coded, we wil fix this later by referring to a resource id!
 
 Then try to constrain the `TextView` so that it is positioned like the screenshot we saw earlier
      

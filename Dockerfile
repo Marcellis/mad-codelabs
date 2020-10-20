@@ -36,4 +36,5 @@ FROM caddy:alpine as Deployment
 WORKDIR /app
 COPY --from=AppCompiler /app/mad-codelabs-site/dist/ .
 EXPOSE 80
+EXPOSE 443
 CMD ["caddy", "file-server"]
