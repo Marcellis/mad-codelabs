@@ -27,7 +27,7 @@ can always check [Github](https://github.com/Marcellis/MadLevel1Example) where y
 In the recording, an expert performs the steps below. The recording can be found here:
 [Mad level 1 Example video recording](https://www.youtube.com/watch?v=hzxYwad7cWw&feature=youtu.be)
 
-## Create a new project
+## Create your first project
 Duration: 0:30:00  
 
 ### Android Studio
@@ -56,8 +56,8 @@ Positive
 We will need to add an image to the app. You can find it [here](https://docs.google.com/uc?export=download&id=1_y5IhZQpKWl3rfybf47ugyYEDbYxCpIz). 
 Download the zip file and extract the image. Images need to be stored in a specific place. 
 In your project expand the ``res`` directory (resources) and then right-click on drawable inside res. 
-On right-clicking you will see ```'Reveal in Explorer(or Finder)'```. Click on 'Reveal in Finder' and 
-then drag or simply copy your downloaded image into the drawable folder (not into ``drawable-v24``).
+On right-clicking you will see ```'Reveal in Explorer(or Finder)'```. Click on this and 
+then drag or copy your downloaded image into the drawable folder (not into ``drawable-v24``).
 
 ## Build the layout
 
@@ -100,7 +100,7 @@ First, try to change to `text` attribute of the `TextView` to:
 `What kind of animal is this?`
 
 Negative
-: For now the text is hard-coded, we wil fix this in the next section!
+: For now the text is hard-coded, we will fix this in the next section!
 
 The second widget is an `ImageView` which can show an Image. The `src` is set to 
 `@drawable/image1` which means the ImageView will display this image. 
@@ -120,7 +120,7 @@ Positive
 ### strings.xml
 
 There are some notifications about hardcoded strings. Solve these errors by replacing the harcoded strings
-with reference to the `string.xml` file:
+with reference to the `strings.xml` file:
 
 ``` xml
 <string name="giraffe">Giraffe</string>
@@ -197,19 +197,21 @@ informing the user they are correct.
  
 ``` kotlin
 /**
-* Check if the submitted answer is correct.
-*/
+ * Check if the submitted answer is correct.
+ */
 private fun checkAnswer() {
-   val answer = binding.etAnswer.text.toString()
+    val answer = binding.etAnswer.text.toString()
 
-   // When the answer equals "giraffe" then display a correct message using a toast message.
-   // Otherwise display an incorrect message.
-   if (answer == getString(R.string.giraffe)) {
-       Toast.makeText(this, getString(R.string.correct), Toast.LENGTH_LONG).show()
-   } else {
-       Toast.makeText(this, getString(R.string.incorrect), Toast.LENGTH_LONG).show()
-   }
-} 
+    // When the answer equals "giraffe" then display a correct message using a toast message.
+    // Otherwise display an incorrect message.
+    val message = if (answer == getString(R.string.giraffe)) {
+        getString(R.string.correct)
+    } else {
+        getString(R.string.incorrect)
+    }
+
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}
 ```
 
 In Kotlin, methods are defined using the `fun` keyword. As with the variables, the return type is 
@@ -224,7 +226,7 @@ A widget is referenced in Kotlin using the binding object and the ID we gave the
 layout file. The meaning of the binding object will be further explained in the next section.
 A variable of type `val` is made which contains the current text from the `EditText` widget.
 
-The method getString is used to retrieve a `String` from the `strings.xml` resource file from an 
+The method `getString(..)` is used to retrieve a `String` from the `strings.xml` resource file from an 
 `Activity`. 
 
 A `Toast` message is made using `Toast.makeText` using the `Context` (the Activity), 
