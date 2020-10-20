@@ -4,7 +4,7 @@ id: level1-example
 categories: Apps
 tags: apps
 status: Published
-feedback link: www.hva.nl
+feedback link: https://github.com/pmeijer-hva/mad-codelabs/issues
 analytics account: UA-3921398-10
 
 # MAD Level 1 - Example
@@ -42,7 +42,6 @@ Once you have successfully downloaded and installed Android Studio you need to "
 4. Choose API 23
 5. Press finish getting started.
 
-
 ### Emulator
 
 The app needs to run either on an [emulator](https://developer.android.com/studio/run/emulator.html) or a real device. It is preferred to use a real device. To use a real device you will need to attach the device to your computer and configure the device for Android development. Instructions for this can be found [here](https://developer.android.com/studio/debug/dev-options).
@@ -57,14 +56,15 @@ Positive
 We will need to add an image to the app. You can find it [here](https://docs.google.com/uc?export=download&id=1_y5IhZQpKWl3rfybf47ugyYEDbYxCpIz). 
 Download the zip file and extract the image. Images need to be stored in a specific place. 
 In your project expand the ``res`` directory (resources) and then right-click on drawable inside res. 
-On right-clicking you will see ```'Reveal in Finder'```. Click on 'Reveal in Finder' and 
+On right-clicking you will see ```'Reveal in Explorer(or Finder)'```. Click on 'Reveal in Finder' and 
 then drag or simply copy your downloaded image into the drawable folder (not into ``drawable-v24``).
 
 ## Build the layout
 
 Duration: 0:60:00
 
-<img src="assets/level1example.gif" width="130" height="225"/><br>
+<img src="assets/level1example.gif" width="130" height="225"/><img src="assets/project_structure.png" width="130" height="225"/><br>
+<br>
 
 In `activity_main.xml`, we will see our first widget: a `TextView`. This widget is used to display text.
 
@@ -76,7 +76,7 @@ It can either be visually or textual or a combination. Try it out!
 You can constrain the top, bottom, left, and right of a view to the top, bottom, left, and right of 
 widgets in a so called `ConstraintLayout`.
 
-For example in text mode, if you look at the TextView you can see it is "constrained" through the following XML attributes:
+For example in text mode, if you look at the `TextView` you can see it is "constrained" through the following XML attributes:
 
 ``` xml
 app:layout_constraintBottom_toBottomOf="parent"
@@ -90,17 +90,17 @@ Try to change to `text` attribute of the `TextView` to:
 
 `What kind of animal is this?`.  
 
+Positive
+: Widgets can be identified by ID's. Using these ID's we can later reference the widgets in the 
+Activity class. We use a convention of prefixing the id with the type widget followed by the 
+thing the widget represents. 
+
 Negative
 : This could be hard-coded in as an attribute but this is not the correct way of doing it!
 
 Then try to constrain the `TextView` so that it is positioned like the screenshot we saw earlier
      
 <img src="assets/constraintlayout.png"/><br>
-
-Positive
-: Widgets can be identified by ID's. Using these ID's we can later reference the widgets in the 
-Activity class. We use a convention of prefixing the id with the type widget followed by the 
-thing the widget represents. 
 
 The second widget is an `ImageView` which can show an Image. The `src` is set to 
 `@drawable/image1` which means the ImageView will display this image. 
@@ -115,7 +115,7 @@ The end of the EditText is constrained to the start of the Button. Button has be
 id `btnConfirm`.
 
 Positive
-: Struggling with your first layout? Check out the solution of this [XML file.](https://github.com/Marcellis/MadLevel1Example)
+: Struggling with your first layout? Check out the solution of this app on [Github](https://github.com/Marcellis/MadLevel1Example).
 
 ### strings.xml
 
@@ -131,11 +131,12 @@ with reference to the `string.xml` file:
 Then you can reference a key from this file like this: `R.string.giraffe`.
 
 ## Building the Activity
-Duration: 0:30:00
+Duration: 0:60:00
 
 ### Enable view binding
 
-The first two levels in this course make use of View Binding. To enable View Binding in the project, change the following in the ‘app/build.gradle’ file.
+The first two levels in this course make use of View Binding. To enable View Binding in the project, 
+change the following in the `app/build.gradle` file.
 
 ```bash
 android {
@@ -189,9 +190,9 @@ layout file.
 ### Checking user input
 
 Create a method called `checkAnswer`
-- When the text in the EditText equals the word “giraffe” a `Toast` message is displayed 
+- When the text in the `EditText` equals the word “giraffe” a `Toast` message is displayed 
 informing the user they are correct.
-- When the text in the EditText does not equals the word “giraffe” a Toast message is displayed
+- When the text in the `EditText` does not equals the word “giraffe” a Toast message is displayed
  informing the user they are incorrect.
  
 ``` kotlin
@@ -215,8 +216,8 @@ In Kotlin, methods are defined using the `fun` keyword. As with the variables, t
 defined using the `:` after the method. The default return type is `Unit` which corresponds 
 to `void` in Java. 
 
-In Kotlin variables are created using either val or var.
-- `val`: indicates that the variable is immutable (final)
+In Kotlin variables are created using either `val` or `var`.
+- `val`: indicates that the variable is immutable (`final`)
 - `var`: indicates that the variable is mutable (can be changed)
 
 A widget is referenced in Kotlin using the binding object and the ID we gave the widget in the 
@@ -230,11 +231,12 @@ A `Toast` message is made using `Toast.makeText` using the `Context` (the Activi
 a `String` for the message and a Length.
 
 ## Pushing to Github!
+Duration: 0:15:00
 
 Congratulations🎉, you completed your first app for this level!
 
 Per level there are three apps, once your done with an app push it to **it's own** Github repository. When you do all
-the levels you'll end up 21 repositories with 21 apps!
+the levels you'll end up with 21 repositories.
 
 Positive
 : See this [link](https://medium.com/code-yoga/how-to-link-android-studio-with-github-312037a13b99) on how to use git with Android Studio

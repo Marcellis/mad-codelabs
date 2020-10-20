@@ -4,7 +4,7 @@ id: level1-task1
 tags: apps
 categories: Apps
 status: Published
-feedback link: https://github.com/SolaceDev/solace-dev-codelabs/tree/master/markdown/codelab-4-codelab
+feedback link: https://github.com/pmeijer-hva/mad-codelabs/issues
 analytics account: UA-3921398-10
 
 # MAD Level 1 - Task 1
