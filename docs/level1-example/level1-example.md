@@ -5,7 +5,7 @@ categories: Apps
 tags: apps
 status: Published
 feedback link: https://github.com/pmeijer-hva/mad-codelabs/issues
-analytics account: UA-3921398-10
+analytics account: UA-180951198-1
 
 # MAD Level 1 - Example
 
@@ -63,8 +63,6 @@ then drag or simply copy your downloaded image into the drawable folder (not int
 
 Duration: 0:60:00
 
-<img src="assets/level1example.gif" width="150" height="275"/><br><br>
-
 <img src="assets/project_structure.png"/>
 
 In `activity_main.xml`, we will see our first widget: a `TextView`. This widget is used to display text.
@@ -74,10 +72,9 @@ It can either be visually or textual or a combination. Try it out!
 
 <img src="assets/attributes.png"/><br>
 
-You can constrain the top, bottom, left, and right of a view to the top, bottom, left, and right of 
-widgets in a so called `ConstraintLayout`.
+### Constraining widgets
 
-For example in text mode, if you look at the `TextView` you can see it is "constrained" through the following XML attributes:
+In text mode, if you look at the `TextView` you can see it is "constrained" through the following XML attributes:
 
 ``` xml
 app:layout_constraintBottom_toBottomOf="parent"
@@ -86,17 +83,24 @@ app:layout_constraintRight_toRightOf="parent"
 app:layout_constraintTop_toTopOf="parent"
 ```
 
-For now switch back to the visual mode and look for the `Attributes` area. 
-Try to change to `text` attribute of the `TextView` to:
-
-`What kind of animal is this?`
-
-Negative
-: For now this is hard-coded, we wil fix this later by referring to a resource id!
+You can constrain the top, bottom, left, and right of a view to the top, bottom, left, and right of 
+widgets in a so called `ConstraintLayout`.
 
 Then try to constrain the `TextView` so that it is positioned like the screenshot we saw earlier
      
 <img src="assets/constraintlayout.png"/><br>
+
+### Changing attributes of the widgets
+
+<img src="assets/level1example.gif" width="190" height="350"/><br><br>
+
+Switch back to the visual mode and look for the `Attributes` area. 
+First, try to change to `text` attribute of the `TextView` to:
+
+`What kind of animal is this?`
+
+Negative
+: For now the text is hard-coded, we wil fix this in the next section!
 
 The second widget is an `ImageView` which can show an Image. The `src` is set to 
 `@drawable/image1` which means the ImageView will display this image. 

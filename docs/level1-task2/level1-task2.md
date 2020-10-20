@@ -5,7 +5,7 @@ tags: apps
 categories: Apps
 status: Published
 feedback link: https://github.com/pmeijer-hva/mad-codelabs/issues
-analytics account: UA-3921398-10
+analytics account: UA-180951198-1
 
 # MAD Level 1 - Task 2
 
