@@ -21,7 +21,8 @@ The user can try again until all the answers are right. The layout file should b
 <img src="assets/level1task2.jpg" width="265" height="450"/>
 <img src="assets/conjunction_table.jpg"/><br>
 
+
 ### You're on your own!
 
 Task 2 of each level doesn't provide you a solution nor step by step guidance. 
-When you are done, push to Github! :collision:
+When you are done, push to Github! 💥

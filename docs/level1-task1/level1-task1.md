@@ -10,6 +10,8 @@ analytics account: UA-180951198-1
 
 # MAD Level 1 - Task 1
 
+## Overview
+
 ### Requirements
 
 The user has to guess if the next number of the dice is higher, equal or lower than the current number.
@@ -44,11 +46,11 @@ Just like the example, make sure to enable viewbinding in `app.gradle`
 
 Next up is adding our images. You can find these [here](https://docs.google.com/uc?export=download&id=1DW5Gm6WXwf5b_V9t9-9ra7UJO6LkPFQJ). 
 
-Positive:
-The drawable folder is where image resources are stored. The Android Framework will generate 
-IDs for the image placed in this folder. These are stored in a file called R.java, 
+Positive
+: The drawable folder is where image resources are stored. The Android Framework will generate 
+IDs for the image placed in this folder. These are stored in a file called `R.java`, 
 and can be referenced in Activities and other resource files (e.g. layout file). 
-The id for dice1.png is R.drawable.dice1.
+The id for dice1.png is `R.drawable.dice1`.
 
 ## Build the layout
 Duration: 0:60:00
@@ -59,6 +61,8 @@ Now, create the layout in `activity_higher_lower.xml`. Open the layout file loca
 by yourself using the design editor (you can do this!).
 
 Otherwise check the solution for the correct XML file.
+
+<img src="assets/level1task1.gif" width="265" height="450"/>
 
 ## Build the initial state of the screen
 Duration: 00:30:00
@@ -259,6 +263,5 @@ private fun initViews() {
 ```
 
 ## Pushing to Github!
-Duration: 0:01:00
 
 Congratulations🎉, you completed your second app of this level! Push it to Github!

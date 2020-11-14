@@ -25,6 +25,7 @@ analytics account: UA-180951198-1
 - how you can log the value of variables in the Android Studio system log, and how you can find them back.
 - Describe how you can debug your app in Android Studio, e.g. by setting breakpoints and inspecting the value of variables.
 
+
 ### Resources
 
 **Android Platform**
