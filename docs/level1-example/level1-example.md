@@ -68,7 +68,7 @@ Duration: 0:60:00
 In `activity_main.xml`, we will see our first widget: a `TextView`. This widget is used to display text.
 
 On the top right in Android Studio you have three options to view the properties of everything in the layout.
-It can either be visually or textual or a combination. Try it out!
+It can either be visually, textually or a combination of the two. Try it out!
 
 <img src="assets/attributes.png"/><br>
 
@@ -237,7 +237,7 @@ Duration: 0:15:00
 
 Congratulations🎉, you completed your first app for this level!
 
-Per level there are three apps, once your done with an app push it to **it's own** Github repository. When you do all
+Per level there are three apps, once you're done with an app push it to **it's own** Github repository. When you do all
 the levels you'll end up with 21 repositories.
 
 Positive
