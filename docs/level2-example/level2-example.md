@@ -323,8 +323,9 @@ In the `initViews` method where the `onClickListener` for the `FloatingActionBut
 the `addReminder` method is invoked using the text from the inputField which is retrieved using `etReminder.text.toString()`. 
 
 Positive
-: - Note in order to support Snackbar make sure that “implementation 'com.google.android.material:material:1.1.0'” is added as dependency in build.gradle (Module: app).
-  - Test if the app works and reminders are added to the user interface.
+: 
+    - Note in order to support Snackbar make sure that “implementation 'com.google.android.material:material:1.1.0'” is added as dependency in build.gradle (Module: app).
+    - Test if the app works and reminders are added to the user interface.
 
 ## Swipe to delete
 Duration: 0:20:00
