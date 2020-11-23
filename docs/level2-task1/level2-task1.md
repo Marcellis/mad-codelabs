@@ -15,8 +15,7 @@ analytics account: UA-180951198-1
 
 We need to build an app to make up a list of places. 
 
-// GIF Not working correctly 
-<img src="assets/test.gif" width="265" height="450"/><br>
+<img src="assets/level2-task1.png" width="265" height="450"/><br>
 
 ### Solution
 
