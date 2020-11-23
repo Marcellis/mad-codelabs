@@ -16,10 +16,11 @@ analytics account: UA-180951198-1
 In this example, we build an app that can be used to write down your reminders. 
 
 ### Solution
-//TODO GIF FOTO
 
 Below you will find the necessary steps to build this app. If you encounter problems you
 can always check [Github](https://github.com/Marcellis/MadLevel2Example) where you can find the whole solution.
+
+<img src="assets/level2-example.png" width="265" height="450"/><br>
 
 **Resources:**
 * For this example, a video recording is available.
