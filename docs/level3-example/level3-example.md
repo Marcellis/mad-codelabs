@@ -15,7 +15,7 @@ analytics account: UA-180951198-1
 
 We will be moving the adding of a reminder to a separate fragment. See the GIF below for the end result:
 
-// TODO GIF
+<img src="assets/level3-example.gif" width="265" height="450"/><br>
 
 ### Solution 
 
@@ -50,13 +50,13 @@ implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
 ## Some refactoring
 
-// TODO add picture
-
 By picking the `Basic Activity` option when creating a project, Android generates an activity and two [fragments](https://developer.android.com/guide/components/fragments) for us. 
 A Fragment represents a behavior or a portion of the user interface. The idea is that an activity can hold multiple fragments. 
 We can navigate between these fragments with the [navigation component](https://developer.android.com/guide/navigation). 
 
 To use this boilerplate code for our project we need to alter some things.
+
+<img src="assets/level3-example.png" width="265" height="450"/><br>
 
 Renaming files:
 
@@ -117,7 +117,6 @@ Keep in mind that the names of the variables are also used in the Kotlin code af
 ``` xml
 <resources>
    ……..
-
    <string name="reminders">Reminders</string>
    <string name="see_below">See below for all your reminders</string>
    <string name="add_your_reminder">Add your reminder</string>
@@ -253,7 +252,7 @@ card_view:cardUseCompatPadding="true">
 
 ### Data model and adapter
 
-You can reuse the `adapter` and `model` from the previous level ( [level 2 example](https://github.com/Marcellis/MadLevel2Example) ). 
+You can reuse the `adapter` and `model` from the previous level ( [level 3 example](https://github.com/Marcellis/MadLevel3Example) ). 
 So copy and paste `Reminder.kt` and `ReminderAdapter.kt`.
 
 As far as accessing these, coupling was previously done in the `MainActivity`, now you will have to do that in the `RemindersFragment`. 
@@ -281,12 +280,13 @@ In the adapter class we are no longer going to use view binding to bind the `tvR
 
 ``` kotlin
 inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    // TODO: remove this line
+    // val binding = ItemReminderBinding.bind(itemView)
 
-   Remove >> val binding = ItemReminderBinding.bind(itemView)
-
-   fun databind(reminder: Reminder) {
-       Remove >> binding.tvReminder.text = reminder.reminderText
-   }
+    fun databind(reminder: Reminder) {
+       // TODO: Remove this line
+       // binding.tvReminder.text = reminder.reminderText
+    }
 }
 ```
 
@@ -296,9 +296,10 @@ This allows us to apparently access a widget directly by using its ID.  So the c
 ``` kotlin
 inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
   
-   fun databind(reminder: Reminder) {
-    Add >> itemView.tvReminder.text = reminder.reminderText
-   }
+    fun databind(reminder: Reminder) {
+        // TODO: add this line 
+        itemView.tvReminder.text = reminder.reminderText
+    }
 }
 ```
 
@@ -345,7 +346,7 @@ using the `New Destination` button and select `fragment_reminders`.  You will se
 Now add the other fragment.  Select the home fragment again and then drag to the `addReminderFragment` to create a navigation between the two.  
 The end result looks like the screen below: 
 
-// TODO add picture
+<img src="assets/level3-example-fragment.png"/><br>
 
 ### Create the add reminder screen layout
 
