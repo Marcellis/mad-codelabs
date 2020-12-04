@@ -21,21 +21,27 @@ analytics account: UA-180951198-1
 ### Resources
 
 **Activity**
+
 [Understand the Activity Lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)
 
 [Understand Tasks and Back Stack](https://developer.android.com/guide/components/activities/tasks-and-back-stack)
 
 **Intents**
+
 [Intents and Intent Filters](https://developer.android.com/guide/components/intents-filters.html)
 
 **Parcelables**
+
 [Parcelables and Bundles](https://developer.android.com/guide/components/activities/parcelables-and-bundles.html)
 
 **Analyzer**
+
 [Inspection](https://developer.android.com/studio/write/lint#manuallyRunInspections)
 
 **RecyclerView and Click Listener**
+
 [Kotlin-style click listener](https://www.andreasjakl.com/recyclerview-kotlin-style-click-listener-android/)
 
 **Naming Conventions**
+
 [android convention cheatsheet](https://github.com/mastani/android-convention-cheatsheet)
