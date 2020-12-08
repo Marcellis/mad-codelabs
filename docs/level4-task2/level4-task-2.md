@@ -11,10 +11,14 @@ analytics account: UA-180951198-1
 
 ## Overview
 
+### What we are building
+
+// TODO add gif of finished product
+
 ### Requirements
 
-We need to build an app in which you can play rock, paper, scissors with the computer. The app has the following requirements:
-
+We need to build an app in which you can play rock, paper, scissors with the computer. 
+The app has the following requirements:
 
 - Let the user select out three images to make their move (rock , paper, scissors).
 - When a user has made their move it’s visualized which move they made and which move the computer made.
@@ -27,15 +31,15 @@ We need to build an app in which you can play rock, paper, scissors with the com
 - The game history should be displayed.
 - The user should be able to clear the game history.
 
-The images used can be download from this [link](https://docs.google.com/uc?export=download&id=1tQ1l5_LyIVqytaVXUc874FIMMjeEKxxR)
+The images used can be downloaded from this [link](https://docs.google.com/uc?export=download&id=1tQ1l5_LyIVqytaVXUc874FIMMjeEKxxR)
 
 The end result should look something like this (**note** statistics are optional, see the extra section):
 
-// todo add pic
-
 ### Tips
 
-Storing object references in Room is not possible. So if you want to use enums or a Date object in the Game Entity class you will be needing TypeConverters, the following link has good documentation and even an example using a Date object on how to use [TypeConverters](https://developer.android.com/training/data-storage/room/referencing-data) 
+Storing object references in Room is not possible. So if you want to use enums, or a Date object in the Game Entity class 
+you will be needing TypeConverters, the following link has some good documentation and even an example using a 
+Date object on how to use [TypeConverters](https://developer.android.com/training/data-storage/room/referencing-data) 
 
 ### Solution
 
@@ -44,7 +48,11 @@ Push the app to your GitHub Repository.
 
 ### Optional
 
-As seen in the example images there are statistics displayed of how many wins, draws and losses the user has. Whenever a user plays, the statistics should be updated. When the game history is cleared then the statistics should also be cleared. With the @Query annotation you can make all sorts of queries on the database. This is the preferred method of getting the statistics (**tip**: using a select count query).
+As seen in the example images there are statistics displayed of how many wins, draws and losses the user has. 
+Whenever a user plays, the statistics should be updated. 
+When the game history is cleared then the statistics should also be cleared. 
+With the @Query annotation you can make all sorts of queries on the database. 
+This is the preferred method of getting the statistics (**tip**: using a select count query).
 
 
 
