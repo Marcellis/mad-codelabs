@@ -7,9 +7,9 @@ status: Published
 feedback link: https://github.com/pmeijer-hva/mad-codelabs/issues
 analytics account: UA-180951198-1
 
-# MAD Level 1 - Question & Resources
+# MAD Level 1 - Questions & Resources
 
-## MAD Level 1 - Question & Resources
+## MAD Level 1 - Questions & Resources
 
 ### Questions
 

@@ -9,7 +9,7 @@ analytics account: UA-180951198-1
 
 # MAD Level 2 - Questions & Resources
 
-## MAD Level 2 - Question & Resources
+## MAD Level 2 - Questions & Resources
 
 ### Questions
 - What is the difference of a staggered grid comparing to a normal grid?

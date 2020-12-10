@@ -18,8 +18,8 @@ button and delete items by swiping them to the left.
 
 ### Solution
 
-Below you will find the necessary steps to build this app. If you encounter problems you can always 
-[check](https://github.com/Marcellis/MadLevel4Task1) where you can find the whole solution.
+Below you will find the necessary steps to build this app. If you encounter problems you can always check the
+[github](https://github.com/Marcellis/MadLevel4Task1) where you can find the whole solution.
 
 // add gif
 
@@ -66,7 +66,9 @@ interface ProductDao {
 }
 ```
 
-In the [DAO](https://developer.android.com/training/data-storage/room/accessing-data.html) (data access object), you specify SQL queries and associate them with method calls. The compiler checks the SQL and generates queries from convenience annotations for common queries, such as @Insert. The Dao must be an interface or abstract class.
+In the [DAO](https://developer.android.com/training/data-storage/room/accessing-data.html) (data access object), 
+you specify SQL queries and associate them with method calls. The compiler checks the SQL and generates queries 
+from convenience annotations for common queries, such as @Insert. The Dao must be an interface or abstract class.
 
 The methods contain the **suspend** keyword which means that they can’t be run outside a coroutine. 
 Which ensures that they won’t be called from the main (ui) thread and cause screen freezes.
@@ -165,7 +167,8 @@ When a method only does one operation it’s possible to replace the brackets wi
 This reduces the lines of code and could make for better code readability. Choose your own preference.
 
 ## Creating shopping list products
-In this step we will be building the main functionality of adding, deleting and showing products. In this step it is expected that you have already built the layout as shown in the image at the top of this learning task.
+In this step we will be building the main functionality of adding, deleting and showing products. 
+In this step it is expected that you have already built the layout as shown in the image at the top of this learning task.
 
 ### Add the repository
 
@@ -383,7 +386,8 @@ A new `coroutine` is launched and using withContext on the `IO Dispatcher` the p
 After the product is deleted the `getShoppingListFromDatabase()` method is called to refresh the list.
 
 Positive
-: Run the project to see if the functionalities we have built work. You should be able to create shopping list items, remove them and retrieve them when you close the app and open the app again.
+: Run the project to see if the functionalities we have built work. You should be able to create shopping list items, 
+remove them and retrieve them when you close the app and open the app again.
 
 ## Removing all products
 
