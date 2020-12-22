@@ -1,5 +1,10 @@
-author: HvA summary: Mad Level 7 - Task 1 id: level7-task1 categories: Apps tags: apps status: Published feedback
-link: https://github.com/pmeijer-hva/mad-codelabs/issues
+author: HvA
+summary: MAD Level 7 - Task 1
+id: level7-task1
+tags: apps
+categories: Apps
+status: Published
+feedback link: https://github.com/pmeijer-hva/mad-codelabs/issues
 analytics account: UA-180951198-1
 
 # MAD Level 7 - Task 1
@@ -11,7 +16,13 @@ analytics account: UA-180951198-1
 Build a user profile app in which the user can create a profile with his/her name, a description and a profile picture
 which can be selected from the image gallery on the user’s phone. The app will also have a splash screen.
 
-// pics
+<img src="assets/pic1.png" width="265" height="450"/>
+&emsp;&emsp;<img src="assets/pic2.png" width="265" height="450"/><br>
+
+<img src="assets/pic3.png" width="265" height="450"/>
+&emsp;&emsp;<img src="assets/pic4.png" width="265" height="450"/><br>
+
+<img src="assets/pic5.png" width="265" height="450"/><br>
 
 ### Solution
 
@@ -23,7 +34,7 @@ the [github](https://github.com/Marcellis/user-profile-kotlin) where you can fin
 Before we start please do the following by yourself:
 
 - Create the project using the ‘empty activity’ template as you’ve done in previous levels.
-- Create a new project on the Firebase console like described in the example.
+- Create a new project on the `Firebase console` like described in the example.
 - We’re going to add two dependencies: one for `Firestore` and one to use `coroutines with Firestore`.
 
 `build.gradle (Module: app)`
@@ -57,15 +68,15 @@ Positive
 
 ## Splash Screen
 
-The first step of creating the app will be making a splash screen.
+The first step of creating the app will be making a `splash screen`.
 
 ### Add a new style
 
-- Rename the MainActivity and name it SplashActivity. Rename the layout file accordingly.
-- Create a new style in styles.xml and call it SplashScreenTheme
-    - Give it the parent Theme.AppCompat.Light.NoActionBar
-    - Give it an item which sets the statusBarColor to colorPrimaryDark
-- Add the style to the SplashActivity.
+- Rename the MainActivity and name it `SplashActivity`. Rename the layout file accordingly.
+- Create a new style in `styles.xml` and call it `SplashScreenTheme`
+    - Give it the parent `Theme.AppCompat.Light.NoActionBar`
+    - Give it an item which sets the statusBarColor to `colorPrimaryDark`
+- Add the style to the `SplashActivity`.
 
 `styles.xml`
 
@@ -102,13 +113,13 @@ layout should look like the Splash Screen image from the requirements section of
 been created using the Asset Studio within Android Studio. Go to drawable folder -> right click -> new -> Vector Asset.
 Create two vectors, one with the color white and one with the color black.
 
-// add pic
+<img src="assets/pic6.png" width="722" height="552"/>
 
 ### Build the SplashActivity functionality
 
-A SplashScreen will be displayed for a few seconds after which it opens a new Activity.
+A `SplashScreen` will be displayed for a few seconds after which it opens a new Activity.
 
-- Use a Handler to start a CreateProfileActivity (we will make this in the next step) after 1 second.
+Use a Handler to start a `CreateProfileActivity` (we will make this in the next step) after 1 second.
 
 `SplashActivity.kt`
 
@@ -135,18 +146,18 @@ class SplashActivity : AppCompatActivity() {
 
 Because we are making a Splash Screen the activity should automatically go to the next activity after 1 second.
 
-To run an action with a delay we make use of a Handler. At the end of the onCreate from the SplashActivity use the
-postDelayed method of a new Handler object to start the, to be created in the next step, MainActivity using an intent.
+To run an action with a delay we make use of a `Handler`. At the end of the `onCreate` from the `SplashActivity` use the
+postDelayed method of a new Handler object to start the, to be created in the next step, `MainActivity` using an intent.
 
-The SplashActivity must also be finished so that it is removed from the back stack (so that when a user presses the back
-button the splash screen doesn’t re-open).
+The `SplashActivity` must also be finished so that it is removed from the back stack (so that when a user presses the
+back button the splash screen doesn’t re-open).
 
 ### MainActivity
 
-Renaming the MainActivity in the previous step was done so you don’t have to specify the SplashActivity as the activity
-that launches the app in the AndroidManifest.xml file. We still need a MainActivity class however. Create a new basic
-activity and name it MainActivity. Rename FirstFragment into CreateProfileFragment; SecondFragment into ProfileFragment;
-and the xml layout files accordingly. And adapt nav_graph.xml accordingly.
+Renaming the `MainActivity` in the previous step was done so you don’t have to specify the `SplashActivity` as the
+activity that launches the app in the `AndroidManifest.xml` file. We still need a `MainActivity` class however. Create a
+new `basic activity` and name it `MainActivity`. Rename FirstFragment into `CreateProfileFragment`; SecondFragment
+into `ProfileFragment`; and the xml layout files accordingly. And adapt `nav_graph.xml` accordingly.
 
 `MainActivity.kt`
 
@@ -168,14 +179,14 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-The important part here is to make sure to set up Firebase.
+The important part here is to make sure to set up `Firebase`.
 
-Also make sure you have the following layout files activity_main.xml and content_main.xml like you have done in previous
-assignments, where the content_main.xml contains the navigation host fragment element.
+Also make sure you have the following layout files `activity_main.xml` and `content_main.xml` like you have done in
+previous assignments, where the `content_main.xml` contains the navigation host fragment element.
 
 ### Strings.xml
 
-Just to save some time, strings.xml should contain next to your own defined strings:
+Just to save some time, `strings.xml` should contain next to your own defined strings:
 
 `strings.xml`
 
@@ -281,16 +292,17 @@ class ProfileRepository {
 }
 ```
 
-Create the ProfileRepository class.
+Create the `ProfileRepository` class.
 
-At the top you see two properties, firestore and profileDocument. The first one makes sure we have an instance of
-Firestore the second one is a reference to the document that we need to store/retrieve our quiz. Then we see two pieces
-of LiveData. The profile property should be self-explanatory by now. The createSucess is to let views know if the
-creation in the database has succeeded(this could be false when no internet connection is available for example). The
-ViewModel will later on determine what error to show based on this boolean. In a similar fashion of how we interact with
-Retrofit in level 6 we now have two methods that use coroutines to interact with Firestore. If succeeded, the profile
-LiveData property will be set, if not an Exception will be thrown. These exceptions are our own exceptions defined by us
-at the bottom of the class.
+At the top you see two properties, `firestore` and `profileDocument`. The first one makes sure we have an instance of
+`Firestore` the second one is a reference to the document that we need to store/retrieve our quiz. Then we see two
+pieces of `LiveData`. The profile property should be self-explanatory by now. The createSucess is to let views know if
+the creation in the database has succeeded(this could be false when no internet connection is available for example).
+The
+`ViewModel` will later on determine what error to show based on this boolean. In a similar fashion of how we interact
+with Retrofit in level 6 we now have two methods that use coroutines to interact with Firestore. If succeeded, the
+profile LiveData property will be set, if not an Exception will be thrown. These exceptions are our **own** exceptions
+defined by us at the bottom of the class.
 
 ## Create the ViewModel
 
@@ -338,24 +350,24 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 }
 ```
 
-Create the ProfileViewModel class.
+Create the `ProfileViewModel` class.
 
-The ViewModel won’t be responsible for talking to Firebase. This is the responsibility of the Repository we have
+The `ViewModel` won’t be responsible for talking to `Firebase`. This is the responsibility of the `Repository` we have
 created. In here we do the following things:
 
-Setup three types of LiveData we can later use to retrieve the data AND also retrieve the status of a request. We have a
-method createProfile() and a methode getProfile(). They both use the, by now familiar, viewModelScope to interact with
-the repository. If there might be an exception thrown by the Repository we will emit that to the view via LiveData.
-Lastly, we have a method we can later on use to validate if a right answer has been given to a quiz question.
+Setup three types of `LiveData` we can later use to retrieve the data **AND** also retrieve the status of a request. We
+have a method `createProfile()` and a methode `getProfile()`. They both use the, by now familiar, `viewModelScope` to
+interact with the repository. If there might be an exception thrown by the Repository we will emit that to the view via
+LiveData. Lastly, we have a method we can later on use to validate if a right answer has been given to a quiz question.
 
 ## CreateProfileFragment
 
-In this step we are going to build the Fragment used for creating a profile.
+In this step we are going to build the `Fragment` used for creating a profile.
 
 ### Build the fragment and the layout
 
 In the previous step the splash screen will start the MainActivity. The first fragment that will be shown is the
-CreateProfileFragment so we will need to build it.
+`CreateProfileFragment` so we will need to build it.
 
 The layout looks similar to the following.
 
@@ -473,10 +485,10 @@ The layout looks similar to the following.
 
 To open the picture gallery from the user’s phone an Intent is used.
 
-- Create a method called onGalleryClick and call it when the gallery button is clicked.
-- Create an intent with the parameter Intent.ACTION_PICK
+- Create a method called `onGalleryClick` and call it when the gallery button is clicked.
+- Create an intent with the parameter `Intent.ACTION_PICK`
 - Set the type of the intent to “image/*”
-- Use startActivityForResult with the galleryIntent and a unique request code.
+- Use `startActivityForResult` with the `galleryIntent` and a **unique** request code.
 
 `CreateProfileFragment.kt`
 
@@ -518,26 +530,29 @@ class CreateProfileFragment : Fragment() {
 }
 ```
 
-An Intent object is created using ACTION_PICK. The Intent class contains static final strings with actions you can use
-that are already provided by the Android Framework such as opening the camera or in our case opening the picture
-gallery. We want the user to be able to pick an image from his photo gallery which means we will be needing the
-ACTION_PICK action. We also need to set a type to the intent because we only want images and not for example videos.
+An Intent object is created using `ACTION_PICK`. The Intent class contains static final strings with actions you can use
+that are already provided by the `Android Framework` such as opening the camera or in our case opening the picture
+gallery. We want the user to be able to pick an image from his or her photo gallery which means we will be needing the
+`ACTION_PICK` action. We also need to set a `type` to the intent because we only want images and not for example videos.
 
-After this startActivityForResult can be used to let Android know that it can start the activity defined by the Intent.
-Create a method called onGalleryClick which is responsible for all of this. Make sure you have created the
+After this `startActivityForResult` can be used to let Android know that it can start the activity defined by the
+Intent. Create a method called `onGalleryClick` which is responsible for all of this. Make sure you have created the
 onClickListener for this function.
 
 If you test the app you will notice that the gallery opens and you can select an image but then when the app returns to
-the CreateProfileActivity nothing has happened. This is because we haven’t implemented the handling of the selected
+the `CreateProfileActivity` nothing has happened. This is because we haven’t implemented the handling of the selected
 image yet.
 
 ### Handling image selected
 
-- Override the onActivityResult method.
-- Check if the result code equals Activity.RESULT_OK and check if the requestCode equals GALLERY_REQUEST_CODE.
+To implement the handling of the selected image do the following:
+
+- Override the `onActivityResult` method.
+- Check if the result code equals `Activity.RESULT_OK` and check if the requestCode equals `GALLERY_REQUEST_CODE`.
 - If the result and request code matches then you can get the uri from the selected image using data?.data.
-- Create a class variable called profileImageUri and set it to the value from data?.data. Also set the imageView to the
-  profileImageUri.
+- Create a class variable called `profileImageUri` and set it to the value from `data?.data`. Also set the `imageView`
+  to the
+  `profileImageUri`.
 
 `CreateProfileFragment.kt`
 
@@ -558,12 +573,12 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 }
 ```
 
-The onActivityResult method will be invoked when the user has selected an image. When we started the activity we sent in
-the request code ‘GALLERY_REQUEST_CODE’ so when we find this request code we know that the activity resumes after this
-action.
+The `onActivityResult` method will be invoked when the user has selected an image. When we started the activity we sent
+in the request code `GALLERY_REQUEST_CODE` so when we find this request code we know that the activity resumes after
+this action.
 
-A class variable var profileImageUri is created to keep track of the latest image selected. The ImageView is set using
-this uri.
+A class variable var `profileImageUri` is created to keep track of the latest image selected. The `ImageView` is set
+using this uri.
 
 ### Create a Profile data class
 
@@ -585,15 +600,15 @@ a profile image).
 
 ### Starting the ProfileFragment
 
-- In the CreateProfileFragment class, create a method called onConfirmClick and make sure that the onClickListener of
-  the confirm Button calls this.
-    - Create a new Profile object using the TextInputEditText widgets and the profileImageUri class variable.
-    - Get the reference to the navigation controller for navigating to the ProfileFragment (will be created in the next
-      step).
-    - Set up a reference to the ProfileViewModel (which we will create later).
-    - Create the profile via the ViewModel and navigate to the ProfileFragment.
+- In the `CreateProfileFragment` class, create a method called `onConfirmClick` and make sure that the `onClickListener`
+  of the confirm Button calls this.
+    - Create a new `Profile` object using the `TextInputEditText` widgets and the `profileImageUri` class variable.
+    - Get the `reference` to the navigation controller for navigating to the `ProfileFragment` (will be created in the
+      next step).
+    - Set up a `reference` to the `ProfileViewModel` (which we will create later).
+    - Create the `profile` via the `ViewModel` and navigate to the `ProfileFragment`.
 
-``
+`CreateProfileFragment.kt`
 
 ```kotlin
 ...
@@ -635,20 +650,20 @@ private fun observeProfileCreation() {
 
 ```
 
-First a Profile object is created using the input the user has given.
+First a `Profile` object is created using the input the user has given.
 
-Via the ViewModel a new Profile is created using the Profile object.
+Via the `ViewModel` a new Profile is created using the Profile object.
 
-After creating the profile we can navigate to the ProfileFragment.
+After creating the profile we can navigate to the `ProfileFragment`.
 
-The two ifNullOrEmpty functions are helper functions to pass some default values in the case that a EditText is left
-empty or if the profileImageUri is null.
+The two `ifNullOrEmpty` functions are helper functions to pass some default values in the case that a `EditText` is left
+empty or if the `profileImageUri` is null.
 
-Note: The ProfileFragment doesn’t exist yet we will create this in the next step.
+*Note*: The ProfileFragment doesn’t exist yet we will create this in the next step.
 
 ## ProfileFragment
 
-In this step we are going to make the Fragment which displays the created profile.
+In this step we are going to make the `Fragment` which displays the created profile.
 
 The layout looks similar to the following.
 
@@ -656,13 +671,14 @@ The layout looks similar to the following.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:padding="12dp"
-                                                   tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        tools:context=".MainActivity">
 
     <ImageView
             android:id="@+id/ivProfileImage"
@@ -705,7 +721,7 @@ The layout looks similar to the following.
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-Next we will Observe the profile being populated.
+Next we will `Observe` the profile being populated.
 
 `ProfileFragment.kt`
 
@@ -748,12 +764,12 @@ class ProfileFragment : Fragment() {
 }
 ```
 
-The name TextView is populated using the firstName and lastName from the profile object which have been concatenated
-using a String with two placeholders from the Strings.xml resource file.
+The name `TextView` is populated using the `firstName` and `lastName` from the profile object which have been
+concatenated using a String with two placeholders from the `Strings.xml` resource file.
 
-The description is populated using the description from the profile object.
+The `description` is populated using the description from the `Profile` object.
 
-The ImageView has been set using the imageUri from the Profile object.
+The `ImageView` has been set using the `imageUri` from the `Profile` object.
 
 Positive
 : That’s it, test the app and see if all the functionalities work! If everything is working push to your github
