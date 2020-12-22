@@ -37,6 +37,10 @@ Clicking a movie will display more information about the movie. The end result s
     - Overview (plot).
 - The transparent toolbar in the movie detail activity can be difficult to accomplish and is optional.
 
+### Solution
+
+Now, you are on your own. There is no solution provided. Good Luck!
+
 ### Tips and Resources
 
 - The Movie Db is a large api with many possibilities. We are only going to use the `Discover` feature. You can find the

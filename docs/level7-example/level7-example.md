@@ -47,7 +47,7 @@ apply plugin: 'com.google.gms.google-services'
 
 dependencies {
    ..
-   implementation 'com.google.firebase:firebase-firestore-ktx:21.4.3'
+   implementation 'com.google.firebase:firebase-firestore-ktx:22.0.1'
    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 }
 ```
