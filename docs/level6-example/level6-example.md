@@ -28,6 +28,8 @@ this in your app as well!
 Below you will find the necessary steps to build this app. If you encounter problems you can always check
 the [github](https://github.com/Marcellis/MadLevel6Example) where you can find the whole solution.
 
+### Prerequisites
+
 - Choose “Basic Activity” to the project
 - Create a new project in Android Studio. Name it Mad Level 6 Example
 - Choose API 23.
