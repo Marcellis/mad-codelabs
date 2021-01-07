@@ -22,10 +22,6 @@ The client needs a simple quiz that presents a picture and asks the user what ki
 Below you will find the necessary steps to build this app. If you encounter problems you
 can always check [Github](https://github.com/Marcellis/MadLevel1Example) where you can find the whole solution.
 
-**Resources:**
-* For this example, a video recording is available.
-In the recording, an expert performs the steps below. The recording can be found here:
-[Mad level 1 Example video recording](https://www.youtube.com/watch?v=hzxYwad7cWw&feature=youtu.be)
 
 ## Create your first project
 Duration: 0:30:00  
