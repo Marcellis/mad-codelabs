@@ -18,7 +18,7 @@ the question to the right if he thinks the statement is correct.
 When a user swipes a question, and the answer is correct then the question is removed from the list. 
 Otherwise, the app should give feedback via a Snackbar message that the question will not be removed from the list.
 
-The result should look like the gif on the left. Add some questions to your app to test the app.  
+The result should look like the gif below. Add some questions to your app to test the app.  
 
 //TODO add gif
 
