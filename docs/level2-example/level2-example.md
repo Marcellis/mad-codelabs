@@ -305,7 +305,7 @@ private fun addReminder(reminder: String) {
        reminderAdapter.notifyDataSetChanged()
        binding.etReminder.text?.clear()
    } else {
-       Snackbar.make(etReminder, "You must fill in the input field!", Snackbar.LENGTH_SHORT).show()
+       Snackbar.make(binding.etReminder, "You must fill in the input field!", Snackbar.LENGTH_SHORT).show()
    }
 }
 ```
