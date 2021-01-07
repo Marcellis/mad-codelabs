@@ -22,10 +22,6 @@ can always check [Github](https://github.com/Marcellis/MadLevel2Example) where y
 
 <img src="assets/level2-example.png" width="265" height="450"/><br>
 
-**Resources:**
-* For this example, a video recording is available.
-In the recording, an expert performs the steps below. The recording can be found here:
-[Mad level 2 Example video recording](https://www.youtube.com/watch?v=bXmzfYzbnjA&feature=youtu.be)
 
 ### Setup a new project
 
