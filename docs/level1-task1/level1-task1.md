@@ -23,15 +23,14 @@ The user has to guess if the next number of the dice is higher, equal or lower t
 
 <img src="assets/level1task1.gif" width="265" height="450"/><br>
 
-Below you will find the necessary steps to build this app. If you encounter problems you
+In this course you will find the necessary steps to build this app. If you encounter problems you
 can always check [Github](https://github.com/Marcellis/MadLevel1Task1) where you can find the whole solution.
 
 
 ## Setup a new project
-Duration: 0:10:00
 
 We’ll start this tutorial by creating a new Android Studio project.
-Once you have successfully downloaded and installed android studio you need to ‘Start a new Project’.
+Once you have successfully downloaded and installed Android Studio you need to ‘Start a new Project’.
 1. Select the ‘Empty Activity’. 
 2. Name the application ‘MadLevel1Task1’
 3. Choose API 23
@@ -53,7 +52,6 @@ and can be referenced in Activities and other resource files (e.g. layout file).
 The id for dice1.png is `R.drawable.dice1`.
 
 ## Build the layout
-Duration: 0:60:00
 
 First rename the `MainActivity` to `HigherLowerActivity` (use Right click on file -> Refactor -> Rename), also rename the layout file to `activity_higher_lower.xml`.
  
@@ -65,7 +63,6 @@ Otherwise check the solution for the correct XML file.
 <img src="assets/level1task1.gif" width="265" height="450"/>
 
 ## Build the initial state of the screen
-Duration: 00:30:00
 
 Start by adding the binding object variable to the class similar to how it was done in the example assignment. 
 
@@ -89,7 +86,7 @@ class HigherLowerActivity : AppCompatActivity() {
 ```
 
 We will be using `currentThrow` to keep track of the current dice number and `lastThrow` of the previous dice number. The variables 
-have the keyword var because we are able to change them. They are initialized with value 1 which means that the first throw will be 1.
+have the keyword var because we want to be able to change them. They are initialized with value 1 which means that the first throw will be 1.
 
 Positive
 : Reminder: In kotlin properties and fields can be declared using the var and val keywords. 
@@ -165,7 +162,6 @@ Overview of the `strings.xml` file after completing this step:
 ```
 
 ## Dice rolling logic
-Duration 00:30:00
 
 ### Randomizing a dice roll
 

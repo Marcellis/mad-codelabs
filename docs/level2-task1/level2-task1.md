@@ -19,17 +19,17 @@ We need to build an app to make up a list of places.
 
 ### Solution
 
-If you encounter problems you can always check [Marcellis/MadLevel2Task1](https://github.com/Marcellis/MadLevel2Task1/blob/master/app/src/main/java/com/example/madlevel2task1/PlaceAdapter.kt) for the whole solution.
+If you encounter problems you can always check [Marcellis/MadLevel2Task1](https://github.com/Marcellis/Madlevel2task1) for the whole solution.
 
 ### Setup a new project
 
-Make sure ones you get started with this example the following steps were taken in advance: 
+Make sure once you get started with this example the following steps were taken in advance: 
 
 1. Select the ‘Empty Activity’
 2. Name the ‘MadLevel2Task1’
 3. Choose language ‘Kotlin’
 4. Choose API 23
-5. Press finish getting started.
+5. Press finish to get started.
 
 ## Setting up the Model and Adapter
 
