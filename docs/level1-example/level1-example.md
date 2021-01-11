@@ -19,12 +19,11 @@ The client needs a simple quiz that presents a picture and asks the user what ki
 
 <img src="assets/level1example.gif" width="265" height="450"/><br>
 
-Below you will find the necessary steps to build this app. If you encounter problems you
+In this course you will find the necessary steps to build this app. If you encounter problems you
 can always check [Github](https://github.com/Marcellis/MadLevel1Example) where you can find the whole solution.
 
 
-## Create your first project
-Duration: 0:30:00  
+## Create your first project 
 
 ### Android Studio
 
@@ -56,8 +55,6 @@ On right-clicking you will see ```'Reveal in Explorer(or Finder)'```. Click on t
 then drag or copy your downloaded image into the drawable folder (not into ``drawable-v24``).
 
 ## Build the layout
-
-Duration: 0:60:00
 
 <img src="assets/project_structure.png"/>
 
@@ -104,7 +101,11 @@ Constrain the image to the start, end of the parent and the bottom of the `TextV
 
 The third widget is an `EditText`(input field). This `EditText` is constrained to 
 the start and bottom of the parent. Constrain the imageview to the top of the EditText. 
-`id` is `etAnswer`.
+`id` is `etAnswer`. 
+
+Negative
+: If EditText is not available, make sure you use minSdkVersion 23, 
+you can change this in the app/build.gradle file. Don't forget to click "Sync now".
 
 The last widget is a `Button`. Constrain the button to the end and bottom of the parent. 
 The end of the EditText is constrained to the start of the Button. Button has been given the 
@@ -127,7 +128,6 @@ with reference to the `strings.xml` file:
 Then you can reference a key from this file like this: `R.string.giraffe`.
 
 ## Building the Activity
-Duration: 0:60:00
 
 ### Enable view binding
 
@@ -229,7 +229,6 @@ A `Toast` message is made using `Toast.makeText` using the `Context` (the Activi
 a `String` for the message and a Length.
 
 ## Pushing to Github!
-Duration: 0:15:00
 
 Congratulations🎉, you completed your first app for this level!
 

@@ -17,7 +17,7 @@ In this example, we build an app that can be used to write down your reminders.
 
 ### Solution
 
-Below you will find the necessary steps to build this app. If you encounter problems you
+In this course you will find the necessary steps to build this app. If you encounter problems you
 can always check [Github](https://github.com/Marcellis/MadLevel2Example) where you can find the whole solution.
 
 <img src="assets/level2-example.png" width="265" height="450"/><br>
@@ -25,18 +25,17 @@ can always check [Github](https://github.com/Marcellis/MadLevel2Example) where y
 
 ### Setup a new project
 
-Make sure ones you get started with this example the following steps were taken in advance: 
+Make sure once you get started with this example the following steps were taken in advance: 
 
 1. Select the ‘Empty Activity’
 2. Name the ‘MadLevel2Example’
 3. Choose language ‘Kotlin’
 4. Choose API 23
-5. Press finish getting started.
+5. Press finish to get started.
 
 ## Create the user interface
-Duration: 0:20:00
 
-### Activity_main.xml
+### activity_main.xml
 
 Create the main activity layout file containing the code listed below 
 
@@ -130,7 +129,6 @@ Positive
 : This xml layout represents the list items of the recyclerview
 
 ## Create the data class
-Duration: 0:10:00
 
 ### Reminder data class
 
@@ -151,7 +149,6 @@ Kotlin automatically creates a constructor that initializes these variables for 
 
 
 ## Create the adapter
-Duration: 0:20:00
 
 ### Create a ReminderAdapter class
 
@@ -160,19 +157,17 @@ Duration: 0:20:00
 3. Create a `ViewHolder` with a bind method which binds the Reminder String to a TextView
 
 
-Wire up the checkAnswer method to the Button widget by setting an OnClickListener to it.
-
 ``` kotlin
 class ReminderAdapter(private val reminders: List<Reminder>) : RecyclerView.Adapter<ReminderAdapter.ViewHolder>(){
 
-inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-   val binding = ItemReminderBinding.bind(itemView)
+        val binding = ItemReminderBinding.bind(itemView)
 
-   fun databind(reminder: Reminder) {
-       binding.tvReminder.text = reminder.reminderText
-       }
-   }
+        fun databind(reminder: Reminder) {
+            binding.tvReminder.text = reminder.reminderText
+        }
+    }
 }
 ```
 For the recyclerview to know how and which items to display, an adapter needs to be created. Create a Kotlin class named `ReminderAdapter`. 
@@ -221,7 +216,6 @@ Android Studio will prompt us to implement methods. The following methods are im
 
 
 ## Setting up the MainActivity
-Duration: 0:30:00
 
 In the MainActivity all the parts we created will come together. 
 - Create and initialize an `ArrayList` of type Reminder.
@@ -314,7 +308,8 @@ Because the list has been updated the adapter needs to be notified that the data
 This is done using `reminderAdapter.notifyDataSetChanged()`. Using `etReminder.text?.clear()` the input field has been cleared.
 
 Note the use of the `?` mark. This means that the variable `etReminder.text` is optional. With `?` it can be the null object or have a value; 
-if it is null nothing happens and the next statement is executed. With `!`, if the value is the null object, the program crashes.
+if it is null nothing happens and the next statement is executed. With `!!`, if the value is a null object a `NullPointerException` 
+will be thrown, and the program will crash.
 
 In the `initViews` method where the `onClickListener` for the `FloatingActionButton` has been moved to, 
 the `addReminder` method is invoked using the text from the inputField which is retrieved using `etReminder.text.toString()`. 
@@ -325,11 +320,10 @@ Positive
     - Test if the app works and reminders are added to the user interface.
 
 ## Swipe to delete
-Duration: 0:20:00
 
 The last step of this app is to add the functionality of `removing` a reminder from the list by swiping it to the left.
 - Create a method called `createItemTouchHelper` and create an `ItemTouchHelper object`.
-- Implement the `ItemTouchHelper.SimpleCallBack` methods and let `onMove` return true and `onSwiped` should remove the item from the list and update the adapter.
+- Implement the `ItemTouchHelper.SimpleCallBack` methods and let `onMove` return false and `onSwiped` should remove the item from the list and update the adapter.
 
 ``` kotlin 
 /**
@@ -379,7 +373,7 @@ after which the object needs to be removed from the reminders list, and lastly,
 the `reminderAdapter` needs to be notified that the data set has changed.
 
 Positive
-: The last step is to attach the ItemTouchHelper to the recyclerView, do this in the initViews method.
+: The last step is to attach the ItemTouchHelper to the RecyclerView, do this in the initViews method.
 
 ``` kotlin
    createItemTouchHelper().attachToRecyclerView(rvReminders)
