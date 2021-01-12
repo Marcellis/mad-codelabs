@@ -32,12 +32,6 @@ analytics account: UA-180951198-1
 
 [Platform Architecture](https://developer.android.com/guide/platform)
 
-**Kotlin**
-
-[Kotlin docs](https://kotlinlang.org/docs/reference/)
-
-[HvA O'Reilly books](https://learning-oreilly-com.rps.hva.nl:2443/library/view/programming-kotlin/9781680507287/)
-
 **Layout**
 
 [Build a Responsive UI with ConstraintLayout](https://developer.android.com/training/constraint-layout/)
