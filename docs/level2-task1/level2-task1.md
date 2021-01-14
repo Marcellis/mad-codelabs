@@ -25,10 +25,10 @@ If you encounter problems you can always check [Marcellis/MadLevel2Task1](https:
 
 Make sure once you get started with this example the following steps were taken in advance: 
 
-1. Select the ‘Empty Activity’
-2. Name the ‘MadLevel2Task1’
-3. Choose language ‘Kotlin’
-4. Choose API 23
+1. Select the ‘Empty Activity’.
+2. Name the ‘MadLevel2Task1’.
+3. Choose language ‘Kotlin’.
+4. Choose API 23.
 5. Press finish to get started.
 
 ## Setting up the Model and Adapter

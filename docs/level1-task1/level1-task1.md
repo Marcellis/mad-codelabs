@@ -32,14 +32,14 @@ can always check [Github](https://github.com/Marcellis/MadLevel1Task1) where you
 We’ll start this tutorial by creating a new Android Studio project.
 Once you have successfully downloaded and installed Android Studio you need to ‘Start a new Project’.
 1. Select the ‘Empty Activity’. 
-2. Name the application ‘MadLevel1Task1’
-3. Choose API 23
-4. Choose language ‘Kotlin’
+2. Name the application ‘MadLevel1Task1’.
+3. Choose API 23.
+4. Choose language ‘Kotlin’.
 5. Press finish to get started.
 
 ### Enable viewbinding
 
-Just like the example, make sure to enable viewbinding in `app.gradle`
+Just like the example, make sure to enable viewbinding in `app.gradle`.
 
 ### Import drawables
 
@@ -184,19 +184,19 @@ private fun rollDice() {
 ```
 
 Positive
-: In this code snippet the (1..6).random() call makes use of Kotlin Ranges which makes a range of 1 to 6 (inclusive).
+: In this code snippet the `(1..6).random()` call makes use of Kotlin Ranges which makes a range of 1 to 6 (inclusive).
 
 ### Higher, equals and lower functionality
 
-When the user clicks on one of these buttons the dice needs to be rolled and a check needs to be done to see if 
+When the user clicks on one of these buttons the dice needs to be rolled, and a check needs to be done to see if 
 the user guessed correctly. When an answer is correct a `Toast` message should be shown with the text `“Correct”`. 
 When an answer is incorrect a Toast message should be shown with the text `“Incorrect”`.
 
-1. Create a method called `onAnswerCorrect` which should show a correct message (Toast) to the user
-2. Create a method called `onAnswerIncorrect` which should show an incorrect message (Toast) to the user
-3. Create a method called `onHigherClick` which should roll the dice and check if the answer is correct
-4. Create a method called `onLowerClick` which should roll the dice and check if the answer is correct
-5. Create a method called `onEqualClick` which should roll the dice and check if the answer is correct
+1. Create a method called `onAnswerCorrect` which should show a correct message (Toast) to the user.
+2. Create a method called `onAnswerIncorrect` which should show an incorrect message (Toast) to the user.
+3. Create a method called `onHigherClick` which should roll the dice and check if the answer is correct.
+4. Create a method called `onLowerClick` which should roll the dice and check if the answer is correct.
+5. Create a method called `onEqualClick` which should roll the dice and check if the answer is correct.
 
 ```kotlin
 /**

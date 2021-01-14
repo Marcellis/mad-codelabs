@@ -27,17 +27,17 @@ can always check [Github](https://github.com/Marcellis/MadLevel2Example) where y
 
 Make sure once you get started with this example the following steps were taken in advance: 
 
-1. Select the ‘Empty Activity’
-2. Name the ‘MadLevel2Example’
-3. Choose language ‘Kotlin’
-4. Choose API 23
+1. Select the ‘Empty Activity’.
+2. Name the ‘MadLevel2Example’.
+3. Choose language ‘Kotlin’.
+4. Choose API 23.
 5. Press finish to get started.
 
 ## Create the user interface
 
 ### activity_main.xml
 
-Create the main activity layout file containing the code listed below 
+Create the main activity layout file containing the code listed below. 
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -92,8 +92,6 @@ A `RecyclerView` allows us to show a list of items in our Android apps.
 The `LinearLayout` component is used in this example to easily align our text input field 
 next to our button.
 
-//TODO VOEG AFBEELDING
-
 The `RecyclerView` widget is `constrained` to fill the screen above the input field. The `RecyclerView`has been 
 given the id: `rvReminders`. 
 
@@ -103,7 +101,7 @@ in order to have the input field and the button be next to each other.
 
 ### item_reminder.xml
 
-After building  the User Interface using a `RecyclerView` (rvReminders as ID) and an `EditText` (etReminder as ID for the text input field), we 
+After building  the User Interface using a `RecyclerView` (`rvReminders` as ID) and an `EditText` (`etReminder` as ID for the text input field), we 
 need to create a layout file representing each item in our list. Define and create an `item_reminder.xml` layout file with one text field. 
 The xml code can be found below.
 
@@ -126,7 +124,7 @@ The xml code can be found below.
 ```
 
 Positive
-: This xml layout represents the list items of the recyclerview
+: This xml layout represents the list items of the recyclerview.
 
 ## Create the data class
 
@@ -153,8 +151,8 @@ Kotlin automatically creates a constructor that initializes these variables for 
 ### Create a ReminderAdapter class
 
 1. Create a `ReminderAdapter` class that will be used by the RecyclerView. 
-2. Let the ReminderAdapter extend the `RecyclerView.Adapter<Reminderadapter.ViewHolder>`, add a list of Reminder objects in the class constructor and implement the methods. 
-3. Create a `ViewHolder` with a bind method which binds the Reminder String to a TextView
+2. Let the `ReminderAdapter` extend the `RecyclerView.Adapter<Reminderadapter.ViewHolder>`, add a list of `Reminder` objects in the class constructor and implement the methods. 
+3. Create a `ViewHolder` with a bind method which binds the Reminder String to a `TextView`.
 
 
 ``` kotlin
@@ -172,13 +170,13 @@ class ReminderAdapter(private val reminders: List<Reminder>) : RecyclerView.Adap
 ```
 For the recyclerview to know how and which items to display, an adapter needs to be created. Create a Kotlin class named `ReminderAdapter`. 
 
-The RecyclerView recycles a set of ViewHolders. The views in the list are represented by ViewHolder objects. An inner class, called `ViewHolder`,
+The RecyclerView recycles a set of `ViewHolders`. The views in the list are represented by `ViewHolder` objects. An inner class, called `ViewHolder`,
 which extends `RecyclerView.ViewHolder` is the view holder for this Recyclerview. In the ViewHolder a reference to the TextView is made, 
 and a bind method is created which is used to populate the widgets with data from the Reminder object. 
 In our case, it sets the text from the TextView to the text from the Reminder String.
 
 Positive
-: Now, change the ReminderAdapter you have just written.
+: Now, change the `ReminderAdapter` you have just written.
 
 ``` kotlin
 /**
@@ -207,18 +205,18 @@ override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 In the class constructor, a variable called `reminders` is added. This is a List of Reminder objects which represent the reminders that should be displayed in the RecyclerView.
 
-The `ReminderAdapter` extends `RecyclerView.Adapter<ReminderAdapter.ViewHolder>`. Here the ViewHolder that was created has been given as the ViewHolder type. 
+The `ReminderAdapter` extends `RecyclerView.Adapter<ReminderAdapter.ViewHolder>`. Here the `ViewHolder` that was created has been given as the `ViewHolder` type. 
 Android Studio will prompt us to implement methods. The following methods are implemented:
 
-- `onCreateViewHolder`: Called when RecyclerView needs a new RecyclerView.ViewHolder. Here a new ReminderAdapter.ViewHolder object is created using a LayoutInflater which inflates the layout resource file item_reminder.
+- `onCreateViewHolder`: Called when RecyclerView needs a new `RecyclerView.ViewHolder`. Here a new `ReminderAdapter.ViewHolder` object is created using a `LayoutInflater` which inflates the layout resource file `item_reminder.xml`.
 - `getItemCount`: Returns the total number of items in the data set held by the adapter.
 - `onBindViewHolder`: Called by RecyclerView to bind the data with the specified position. The bind method made in the previous step is used.
 
 
 ## Setting up the MainActivity
 
-In the MainActivity all the parts we created will come together. 
-- Create and initialize an `ArrayList` of type Reminder.
+In the `MainActivity` all the parts we created will come together. 
+- Create and initialize an ArrayList of type `Reminder`.
 - Create and initialize a `ReminderAdapter`.
 - Within the `onCreate` function, initialize the binding.
  
@@ -229,8 +227,8 @@ In the MainActivity all the parts we created will come together.
    private lateinit var binding: ActivityMainBinding
 ```
 
-Using the Kotlin method `arrayListOf<Reminder>` an ArrayList of type Reminder is initialized. 
-This list is given as a parameter when initializing the ReminderAdapter.
+Using the Kotlin method `arrayListOf<Reminder>` an ArrayList of type `Reminder` is initialized. 
+This list is given as a parameter when initializing the `ReminderAdapter`.
 
 ``` kotlin 
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -243,17 +241,17 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ```
 
 A method called `initViews` is made which is going to be responsible for initializing the views on startup. 
-This method is called in the onCreate.
+This method is called in the `onCreate`.
 
 ### Setting up the RecyclerView
 
 To initialize the RecyclerView:
 
-- Create the initViews method called in onCreate before.
-- Create an onClickListener associated with the button.
-- Set the layout manager of the RecyclerView to a LinearLayoutManager.
-- Set the Adapter of the RecyclerView to the ReminderAdapter.
-- Set the ItemDecoration to a DividerItemDecoration.
+- Create the `initViews` method called in `onCreate` before.
+- Create an `onClickListener` associated with the button.
+- Set the layout manager of the RecyclerView to a `LinearLayoutManager`.
+- Set the Adapter of the RecyclerView to the `ReminderAdapter`.
+- Set the `ItemDecoration` to a `DividerItemDecoration`.
 
 ``` kotlin 
 private fun initViews() {
@@ -271,7 +269,7 @@ private fun initViews() {
 }
 ```
 
-Within the initViews method a `layoutManager` is added to the Recyclerview of type `LinearLayoutManager` 
+Within the `initViews` method a `layoutManager` is added to the Recyclerview of type `LinearLayoutManager` 
 which defines that our RecyclerView will be Linear (e.g. if you want a grid layout a `GridLayoutManager` is used). 
 The `reminderAdapter` is also added. An `itemDecoration` is also added, 
 the `dividerItemDecoration` adds a line under each item in the RecyclerView to separate them, giving a better user experience.
@@ -280,9 +278,9 @@ the `dividerItemDecoration` adds a line under each item in the RecyclerView to s
 
 Having done this, the recyclerview is all set. But it’s still empty because we don’t have any reminders yet. Create the functionality of adding reminders.
 - Create a method called `addReminder(reminder: String)`
-- In addReminder check if the String is not empty. Display a `SnackBar message` if it is.
-- In addReminder add a new `Reminder object` to the reminders ArrayList.
-- In addReminder notify the adapter that the dataset has changed. 
+- In `addReminder` check if the String is not empty. Display a `SnackBar` message if it is.
+- In `addReminder` add a new `Reminder object` to the reminders ArrayList.
+- In `addReminder` notify the adapter that the dataset has changed. 
 - Last be not least clear the inputfield.
 
 Below the code to add to the addReminder method.
@@ -292,7 +290,7 @@ Below the code to add to the addReminder method.
 private fun addReminder(reminder: String) {
    if (reminder.isNotBlank()) {
        reminders.add(Reminder(reminder))
-       reminderAdapter.notifyDataSetChanged()
+       reminderAdapter.notifyDataSetChanged()`
        binding.etReminder.text?.clear()
    } else {
        Snackbar.make(binding.etReminder, "You must fill in the input field!", Snackbar.LENGTH_SHORT).show()
@@ -303,7 +301,7 @@ private fun addReminder(reminder: String) {
 Using the Kotlin method `isNotBlank` it is verified that the String is not null or empty. 
 A SnackBar message is displayed if it’s empty to notify the user that you can’t add empty reminders.
 
-If the reminder is valid a Reminder object is created using the String and it is added to the reminders ArrayList. 
+If the reminder is valid a `Reminder` object is created using the String and it is added to the reminders ArrayList. 
 Because the list has been updated the adapter needs to be notified that the dataset has changed so it can refresh itself. 
 This is done using `reminderAdapter.notifyDataSetChanged()`. Using `etReminder.text?.clear()` the input field has been cleared.
 
@@ -357,29 +355,29 @@ private fun createItemTouchHelper(): ItemTouchHelper {
 }
 ```
 Positive
-: An ItemTouchHelper is used to enable the swiping of items from a RecyclerView. A method called createItemTouchHelper is created which returns an ItemTouchHelper.
+: An `ItemTouchHelper` is used to enable the swiping of items from a RecyclerView. A method called `createItemTouchHelper` is created which returns an `ItemTouchHelper`.
 
 An `ItemTouchHelper` is created using an `ItemTouchHelper.SimpleCallBack` interface. 
 The implementation is stored in a variable called `callback`. 
 
-The SimpleCallback parameters given define that we only want this callback to be done when a user swipes to the left (0, ItemTouchHelper.LEFT). 
+The `SimpleCallback` parameters given define that we only want this callback to be done when a user swipes to the left `(0, ItemTouchHelper.LEFT)`. 
 The callback implements two methods:
 - `onMove`: Called when `ItemTouchHelper` wants to move the dragged item from its old position to the new position. 
 - `onSwiped`: Called when a `ViewHolder` is swiped by the user. 
 
-For the onMove method simply return false because we don’t implement this functionality. For the onSwiped method, 
+For the `onMove` method simply return false because we don’t implement this functionality. For the `onSwiped` method, 
 the position of the viewholder in the adapter needs to be found using `viewHolder.adapterPosition`, 
 after which the object needs to be removed from the reminders list, and lastly, 
 the `reminderAdapter` needs to be notified that the data set has changed.
 
 Positive
-: The last step is to attach the ItemTouchHelper to the RecyclerView, do this in the initViews method.
+: The last step is to attach the `ItemTouchHelper` to the RecyclerView, do this in the `initViews` method.
 
 ``` kotlin
    createItemTouchHelper().attachToRecyclerView(rvReminders)
 ```
 
-`ItemTouchHelper` has a method called `attachToRecyclerView` which is used to attach the ItemTouchHelper to the `rvReminders` RecyclerView.
+`ItemTouchHelper` has a method called `attachToRecyclerView` which is used to attach the `ItemTouchHelper` to the `rvReminders` RecyclerView.
 
 Congratulations🎉, you completed your first recyclerview application!
 

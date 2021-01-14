@@ -20,7 +20,7 @@ Otherwise, the app should give feedback via a Snackbar message that the question
 
 The result should look like the gif below. Add some questions to your app to test the app.  
 
-//TODO add gif
+<img src="assets/level1task1.gif" width="265" height="450"/><br>
 
 ### You're on your own!
 

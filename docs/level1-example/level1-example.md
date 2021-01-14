@@ -27,14 +27,14 @@ can always check [Github](https://github.com/Marcellis/MadLevel1Example) where y
 
 ### Android Studio
 
-Firstly, download and install [Android Studio](https://developer.android.com/studio)  
+Firstly, download and install [Android Studio](https://developer.android.com/studio).  
 
 Once you have successfully downloaded and installed Android Studio you need to "Start a new Project":
 
-1. Select the ‘Empty Activity’
-2. Name the ‘MadLevel1Example’
-3. Choose language ‘Kotlin’
-4. Choose API 23
+1. Select the ‘Empty Activity’.
+2. Name the ‘MadLevel1Example’.
+3. Choose language ‘Kotlin’.
+4. Choose API 23.
 5. Press finish getting started.
 
 ### Emulator
@@ -44,14 +44,14 @@ This is the best option if you do not have a high spec machine to develop your c
 The emulator can be very slow but is a good option if you have a fast machine or don't have an Android device.
 
 Positive
-: Run the app to validate that the emulator and the Android SDK are working properly
+: Run the app to validate that the emulator and the Android SDK are working properly.
 
 ### Adding assets to the project
 
 We will need to add an image to the app. You can find it [here](https://docs.google.com/uc?export=download&id=1_y5IhZQpKWl3rfybf47ugyYEDbYxCpIz). 
 Download the zip file and extract the image. Images need to be stored in a specific place. 
 In your project expand the ``res`` directory (resources) and then right-click on drawable inside res. 
-On right-clicking you will see ```'Reveal in Explorer(or Finder)'```. Click on this and 
+On right-clicking you will see ```'Reveal in Explorer (or Finder)'```. Click on this and 
 then drag or copy your downloaded image into the drawable folder (not into ``drawable-v24``).
 
 ## Build the layout
@@ -104,8 +104,8 @@ the start and bottom of the parent. Constrain the imageview to the top of the Ed
 `id` is `etAnswer`. 
 
 Negative
-: If EditText is not available, make sure you use minSdkVersion 23, 
-you can change this in the app/build.gradle file. Don't forget to click "Sync now".
+: If `EditText is` not available, make sure you use `minSdkVersion 23`, 
+you can change this in the `app/build.gradle` file. Don't forget to click "Sync now".
 
 The last widget is a `Button`. Constrain the button to the end and bottom of the parent. 
 The end of the EditText is constrained to the start of the Button. Button has been given the 
@@ -215,10 +215,10 @@ defined using the `:` after the method. The default return type is `Unit` which 
 to `void` in Java. 
 
 In Kotlin variables are created using either `val` or `var`.
-- `val`: indicates that the variable is immutable (`final`)
-- `var`: indicates that the variable is mutable (can be changed)
+- `val`: indicates that the variable is immutable (`final`).
+- `var`: indicates that the variable is mutable (can be changed).
 
-A widget is referenced in Kotlin using the binding object and the ID we gave the widget in the 
+A widget is referenced in Kotlin using the binding object, and the ID we gave the widget in the 
 layout file. The meaning of the binding object will be further explained in the next section.
 A variable of type `val` is made which contains the current text from the `EditText` widget.
 
