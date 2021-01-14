@@ -16,9 +16,9 @@ analytics account: UA-180951198-1
 - What are the names of the latest three versions of Android?
 - What does the abbreviation ART stand for?
 - What is Android Jetpack?
-- Describe the difference between the fixed, wrap_content and match_constraint setting of the constraint layout?
+- Describe the difference between the fixed, `wrap_content` and `match_constraint` setting of the constraint layout?
 - What does the abbreviation DP stand for and why do we need them?
-- What is the purpose of the string.xml file?
+- What is the purpose of the `strings.xml` file?
 - Why is the layout in Android specified by .xml files?  Why not just have the layout in the code (Kotlin or Java)?
 - What kind of information can be found in the manifest file?
 - What is the purpose of view binding in Android?
@@ -30,6 +30,8 @@ analytics account: UA-180951198-1
 **Android Platform**
 
 [Platform Architecture](https://developer.android.com/guide/platform)
+
+[Jetpack](https://developer.android.com/jetpack)
 
 **Layout**
 
