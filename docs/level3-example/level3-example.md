@@ -19,7 +19,7 @@ We will be moving the adding of a reminder to a separate fragment. See the GIF b
 
 ### Solution 
 
-Below you will find the necessary steps to build this app. If you encounter problems 
+In this course you will find the necessary steps to build this app. If you encounter problems 
 you can always check the [github](https://github.com/Marcellis/madlevel3example) where you can find the whole solution.
 
 ### Video recording
@@ -34,9 +34,9 @@ We’ll start this tutorial by creating a new Android Studio project. We’ll us
 
 1. ‘Start a new project’.
 2. Select the ‘Basic Activity’. 
-3. Name the application ‘MadLevel3Example’
-4. Choose API 23
-5. Choose language ‘Kotlin’
+3. Name the application ‘MadLevel3Example’.
+4. Choose API 23.
+5. Choose language ‘Kotlin’.
 6. Press finish to get started.
 
 ### Edit your app/build.gradle
@@ -46,6 +46,17 @@ We will be using a new release of the fragment dependency. Add the following dep
 ``` kotlin
 def fragment_version = "1.3.0-alpha06"
 implementation "androidx.fragment:fragment-ktx:$fragment_version"
+```
+
+We will also be using view binding for this example.
+
+```kotlin
+android {
+    ...
+    buildFeatures {
+        viewBinding = true
+    }
+}
 ```
 
 ## Some refactoring
@@ -62,17 +73,11 @@ Renaming files:
 
 -  Right click → Refactor → Rename  `FirstFragment` to `RemindersFragment` and `SecondFragment` to `AddReminderFragment`
 
--  Do the same for the two selected layout files shown on the image(with proper name conventions - the names of the xml files and their corresponding Kotlin files show you the naming conventions - also see the Naming Conventions link in the Resources section for this level)
+-  Do the same for the two selected layout files shown on the image (with proper name conventions - the names of the xml files and their corresponding Kotlin files show you the naming conventions - also see the Naming Conventions link in the Resources section for this level)
 
 We also need to clean up the fragments, make the following changes:
 
 -  Remove the `Button` and the `TextView` from both fragments’ layouts. Also remove the `clicklistener` in the Fragment classes
-
-Positive
-: We won’t be applying viewbinding from this level and onwards. You can optionally apply this like we did in the first two levels. 
-Viewbinding is always the best solution since it’s null safe and type safe but with the current SDK you have to manually do this for every Adapter, 
-Fragment, Activity and so on. That’s why, for the benefits of explaining this course as clearly as possible, we’re using Kotlin synthetics for now. 
-This is what you’ll see in the coming steps of this example. 
 
 -  We chose a Basic Activity and this gives us a floating action button (FAB) by default.  
 You might have noticed that there are also two layout files related to the main activity.  
@@ -99,9 +104,9 @@ android:tint="@android:color/white"
 to change the plus sign colour to white. 
 
 Positive
-: if you stay in the Design tab, you can also change this in “Attributes”, 
-by selecting the dropdown behind “srcCompat” and selecting “ic_input_add”, 
-and for “tint” select “@android:color/white”.
+: If you stay in the Design tab, you can also change this in “Attributes”, 
+by selecting the dropdown behind `srcCompat` and selecting `ic_input_add`, 
+and for “tint” select `@android:color/white`.
 
 ## User interface (xml files)
 
@@ -252,7 +257,7 @@ card_view:cardUseCompatPadding="true">
 
 ### Data model and adapter
 
-You can reuse the `adapter` and `model` from the previous level ( [level 3 example](https://github.com/Marcellis/MadLevel3Example) ). 
+You can reuse the `adapter` and `model` from the previous level ( [Level 2 Example](https://github.com/Marcellis/MadLevel2Example/tree/master/app/src/main/java/com/example/madlevel2example) ). 
 So copy and paste `Reminder.kt` and `ReminderAdapter.kt`.
 
 As far as accessing these, coupling was previously done in the `MainActivity`, now you will have to do that in the `RemindersFragment`. 
@@ -265,7 +270,7 @@ private val reminders = arrayListOf<Reminder>()
 private val reminderAdapter = ReminderAdapter(reminders)
 ```
 
-and in `onViewCreated` call the `initViews` method. It will be created later.
+and in `onViewCreated` call the `initViews` method.
 
 ``` kotlin
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -275,73 +280,30 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 }
 ```
 
-In the adapter class we are no longer going to use view binding to bind the `tvReminder.text` to the field in our data class: 
-`reminder.reminderText`. In the previous example, using view binding, we had: 
+The `initViews` method in the `RemindersFragment` will look like this.
 
-``` kotlin
-inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    // TODO: remove this line
-    // val binding = ItemReminderBinding.bind(itemView)
-
-    fun databind(reminder: Reminder) {
-       // TODO: Remove this line
-       // binding.tvReminder.text = reminder.reminderText
+```kotlin
+    private fun initViews() {
+        // Initialize the recycler view with a linear layout manager, adapter
+        binding.rvReminders.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.rvReminders.adapter = reminderAdapter
+        binding.rvReminders.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
-}
 ```
 
-From now on, as mentioned earlier, we are going to use ***Kotlin Synthetics***.  
-This allows us to apparently access a widget directly by using its ID.  So the code can be something like this: 
-
-``` kotlin
-inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-  
-    fun databind(reminder: Reminder) {
-        // TODO: add this line 
-        itemView.tvReminder.text = reminder.reminderText
-    }
-}
-```
-
-You should be prompted for an import but if you are getting compiler errors about not finding tvReminder then make sure that the line: 
-apply plugin: 'kotlin-android-extensions' is in your gradle build file. 
-Also you might have to import the R class in the onCreateViewHolder method, 
-and you have to deactivate “import com.example.madlevel2example.databinding.ItemReminderBinding”.
-
-In the RemindersFragment.kt you will also need to make a change in the way the context is accessed.  
-In the previous example the code was
-
-``` kotlin
-private fun initViews(){
-   // Initialize the recycler view with a linear layout manager, adapter
-   binding.rvReminders.layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
-   binding.rvReminders.adapter = reminderAdapter
-   binding.rvReminders.addItemDecoration(DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL))
-   binding.btnAddReminder.setOnClickListener {
-       val reminder = binding.etReminder.text.toString()
-       addReminder(reminder)
-
-   }
-```
-
-and now it should become:
-
-``` kotlin
-private fun initViews() {
-   // Initialize the recycler view with a linear layout manager, adapter
-   rvReminders.layoutManager =
-       LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-   rvReminders.adapter = reminderAdapter
-   rvReminders.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
-}
-```
 ### Edit res/navigation/nav_graph.xml
 
 First make sure that you have built the add reminder screen (see the image at the beginning of this tutorial) on the `fragment_add_reminder.xml`.
 Navigation between fragments is defined by an xml file called `nav_graph.xml`.  
 This can be seen in the directory `/res/navigation`.  This file contains all the definitions of fragments and the related navigation actions. 
 The navigation component will parse this file and build a graph for the navigation flow. The file has already been generated because the basic activity uses fragments.  
-Delete the existing `nav_graph.xml` file and then create a new one.  In the design view of the `nav-graph.xml` file add a new destination 
+Delete the existing `nav_graph.xml` file and then create a new one.  In the design view of the `nav_graph.xml` file add a new destination 
 using the `New Destination` button and select `fragment_reminders`.  You will see that a view of the fragments reminders is displayed with a home symbol.  
 Now add the other fragment.  Select the home fragment again and then drag to the `addReminderFragment` to create a navigation between the two.  
 The end result looks like the screen below: 
@@ -356,19 +318,25 @@ Make the following changes:
 
 ``` kotlin
 private lateinit var navController: NavController
+private lateinit var binding: ActivityMainBinding
 
 override fun onCreate(savedInstanceState: Bundle?) {
-    ...
+    super.onCreate(savedInstanceState)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    setSupportActionBar(findViewById(R.id.toolbar))
 
-    navController = findNavController(R.id.nav_host_fragment)
+    val navHostFragment =
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
-    fab.setOnClickListener {
-       navController.navigate(
-          R.id.action_remindersFragment_to_addReminderFragment
-       )
+    navController = navHostFragment.navController
+
+    binding.fab.setOnClickListener {
+        navController.navigate(
+            R.id.action_remindersFragment_to_addReminderFragment
+        )
     }
-
-    }
+}
 ```
 
 The `NavController` manages the navigation within a `NavHost`, all fragments will be embedded into this placeholder fragment when navigating. 
@@ -384,13 +352,13 @@ We need to hide the FAB when the Add Reminder Fragment is visible.  For this we�
 
 ``` kotlin
 private fun fabToggler() {
-   navController.addOnDestinationChangedListener { _,       destination, _ ->
-       if (destination.id in arrayOf(R.id.addReminderFragment)) {
-           fab.hide()
-       } else {
-           fab.show()
-       }
-   }
+    navController.addOnDestinationChangedListener { _, destination, _ ->
+        if (destination.id in arrayOf(R.id.addReminderFragment)) {
+            binding.fab.hide()
+        } else {
+            binding.fab.show()
+        }
+    }
 }
 ```
 
@@ -398,20 +366,27 @@ Call the `fabToggler` method from the `onCreate` method:
 
 ``` kotlin
 private lateinit var navController: NavController
+private lateinit var binding: ActivityMainBinding
 
 override fun onCreate(savedInstanceState: Bundle?) {
-    ...
+    super.onCreate(savedInstanceState)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    setSupportActionBar(findViewById(R.id.toolbar))
 
-    navController = findNavController(R.id.nav_host_fragment)
+    val navHostFragment =
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
-    fab.setOnClickListener {
-       navController.navigate(
-          R.id.action_remindersFragment_to_addReminderFragment
-       )
+    navController = navHostFragment.navController
+
+    binding.fab.setOnClickListener {
+        navController.navigate(
+            R.id.action_remindersFragment_to_addReminderFragment
+        )
     }
-      fabToggler()
 
-    }
+    fabToggler()
+}
 ```
 
 Now test your code and see if it navigates to the add reminder screen without showing the `FAB`. 
@@ -424,53 +399,59 @@ Add the following code to `AddReminderFragment.kt`:
 const val REQ_REMINDER_KEY = "req_reminder"
 const val BUNDLE_REMINDER_KEY = "bundle_reminder"
 
-
 class AddReminderFragment : Fragment() {
 
-..
+    private var _binding: FragmentAddReminderBinding? = null
+    private val binding get() = _binding!!
 
-override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-  super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentAddReminderBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-   btnAddReminder.setOnClickListener {
-       onAddReminder()
-   }
-}
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-private fun onAddReminder() {
-   val reminderText = etReminderName.text.toString()
+        binding.btnAddReminder.setOnClickListener {
+            onAddReminder()
+        }
+    }
 
-   if (reminderText.isNotBlank()) {
-          //set the data as fragmentResult, we are listening for REQ_REMINDER_KEY in RemindersFragment!                  
-     setFragmentResult(REQ_REMINDER_KEY, bundleOf(Pair(BUNDLE_REMINDER_KEY, reminderText)))
+    private fun onAddReminder() {
+        val reminderText = binding.etReminderName.text.toString()
 
-   //"pop" the backstack, this means we destroy 
-   //this fragment and go back to the RemindersFragment
-     findNavController().popBackStack()
+        if (reminderText.isNotBlank()) {
+            //set the data as fragmentResult, we are listening for REQ_REMINDER_KEY in RemindersFragment!
+            setFragmentResult(REQ_REMINDER_KEY, bundleOf(Pair(BUNDLE_REMINDER_KEY, reminderText)))
 
-} else {
-       Toast.makeText(
-           activity,
-           R.string.not_valid_reminder, Toast.LENGTH_SHORT
-       ).show()
-   }
-}
+            //"pop" the backstack, this means we destroy
+            //this fragment and go back to the RemindersFragment
+            findNavController().popBackStack()
 
-..
+        } else {
+            Toast.makeText(
+                activity,
+                R.string.not_valid_reminder, Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 }
 ```
 
 With our navigation actions in place we can add some logic to the `AddReminderFragment`.
 
-First, set a `clickListener` on the button which calls a method called `addReminder()`.
+First, set a `clickListener` on the button which calls a method called `onAddReminder()`.
 
-Then in the onAddReminder() method we do three things:
-1. Validate the user input
-2. Fragments are placed on a so-called `backstack`. This is a complex stack and it’s a difficult job to keep state 
-and pass data between these fragments. For fragments, we can use `setFragmentResult(..)` with the latest alpha version of the fragment dependency(step 1.2). 
-After submitting in the `AddReminderFragment` we can set an object(for us a String) wrapped in a `Bundle`. 
+Then in the `onAddReminder()` method we do three things:
+1. Validate the user input.
+2. Fragments are placed on a so-called `backstack`. This is a complex stack and it’s a difficult job to keep state
+and pass data between these fragments. For fragments, we can use `setFragmentResult(..)` with the latest alpha version of the fragment dependency ([Step 2](https://mad-codelabs.azurewebsites.net/codelabs/level3-example/index.html?index=..%2F..index#1)). 
+After submitting in the `AddReminderFragment` we can set an object (for us a String) wrapped in a `Bundle`. 
 Later on we can listen for this result in the `RemindersFragment`. Also note we pass a `Pair` with the key and value, nice helper class of Kotlin!
-3. Lastly, we “pop” the backstack. This removes the current `fragment(`AddReminderFragment`) and brings us back to the `RemindersFragment`.
+3. Lastly, we “pop” the backstack. This removes the current fragment (`AddReminderFragment`) and brings us back to the `RemindersFragment`.
 
 See this [link](https://developer.android.com/training/basics/fragments/pass-data-between) for more information about passing data between `Fragments`.
 
@@ -481,15 +462,14 @@ The last step is to retrieve the Reminder object in the `RemindersFragment:`
 
 ``` kotlin
 private fun observeAddReminderResult() {
-   setFragmentResultListener(REQ_REMINDER_KEY) { key, bundle ->
-      bundle.getString(BUNDLE_REMINDER_KEY)?.let {
-           val reminder = Reminder(it)
+    setFragmentResultListener(REQ_REMINDER_KEY) { _, bundle ->
+        bundle.getString(BUNDLE_REMINDER_KEY)?.let {
+            val reminder = Reminder(it)
 
-           reminders.add(reminder)
-           reminderAdapter.notifyDataSetChanged()
-       } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
-
-   }
+            reminders.add(reminder)
+            reminderAdapter.notifyDataSetChanged()
+        } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
+    }
 }
 ```
 Here we are listening for the result which has been set in the `AddReminderFragment`. 
@@ -502,47 +482,48 @@ should be added to the recyclerview list.
 
 ## Remove reminder by swiping left
 
-We already did similar in level 2. In `RemindersFragment`:
+We have already created a `createItemTouchHelper` method in [Level 2 Example](https://mad-codelabs.azurewebsites.net/codelabs/level2-example/index.html?index=..%2F..index#5), 
+we will also implement this in `RemindersFragment`:
 -  Create a method called `createItemTouchHelper` and create an `ItemTouchHelper` object.
 -  Implement the `ItemTouchHelper.SimpleCallBack` methods and let `onMove` return true and `onSwiped` 
 should remove the item from the list and update the adapter.
 
 ```kotlin 
 /**
-* Create a touch helper to recognize when a user swipes an item from a recycler view.
-* An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
-* and uses callbacks to signal when a user is performing these actions.
-*/
+ * Create a touch helper to recognize when a user swipes an item from a recycler view.
+ * An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
+ * and uses callbacks to signal when a user is performing these actions.
+ */
 private fun createItemTouchHelper(): ItemTouchHelper {
 
-   // Callback which is used to create the ItemTouch helper. Only enables left swipe.
-   // Use ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) to also enable right swipe.
-   val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+    // Callback which is used to create the ItemTouch helper. Only enables left swipe.
+    // Use ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) to also enable right swipe.
+    val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
-       // Enables or Disables the ability to move items up and down.
-       override fun onMove(
-           recyclerView: RecyclerView,
-           viewHolder: RecyclerView.ViewHolder,
-           target: RecyclerView.ViewHolder
-       ): Boolean {
-           return false
-       }
+        // Enables or Disables the ability to move items up and down.
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
 
-       // Callback triggered when a user swiped an item.
-       override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-           val position = viewHolder.adapterPosition
-           reminders.removeAt(position)
-           reminderAdapter.notifyDataSetChanged()
-       }
-   }
-   return ItemTouchHelper(callback)
+        // Callback triggered when a user swiped an item.
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.adapterPosition
+            reminders.removeAt(position)
+            reminderAdapter.notifyDataSetChanged()
+        }
+    }
+    return ItemTouchHelper(callback)
 }
 ```
 
 - Attach the `ItemTouchHelper` to the recyclerView, do this in the `initViews` method.
 
 ``` kotlin
-    createItemTouchHelper().attachToRecyclerView(rvReminders)
+createItemTouchHelper().attachToRecyclerView(binding.rvReminders)
 ```
 Now run the app, we are done!
 
