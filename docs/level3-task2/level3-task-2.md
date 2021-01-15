@@ -15,26 +15,25 @@ We need to build an application where you can manage all the portals (websites) 
 is used to manage this list. The other screen is responsible for adding a portal. The portals don’t currently need to be stored, 
 that something we will learn in the next level. This is an example of how the end result should look:
 
-// TODO GIF
+<img src="assets/level3task2.png" width="530" height="450"/>
 
 ## Hints
 
-To pass an object(Portal) to other Android components (in our case send the Portal object from one fragment to another) 
+To pass an object (`Portal`) to other Android components (in our case send the `Portal` object from one fragment to another) 
 Android has created an implementation of Java’s `Serializable` which is called `Parcelable`. 
 To make the Portal object `Parcelable` we will be using Kotlin’s `Parcelize` annotation. 
 
-For more information: check this [link](https://kotlinlang.org/docs/tutorials/android-plugin.html#parcelable-implementations-generator)
-A study of the `Parcelize` feature from Kotlin Android Extensions
+For more information: check this [link](https://kotlinlang.org/docs/tutorials/android-plugin.html#parcelable-implementations-generator).
+A study of the `Parcelize` feature from Kotlin Android Extensions.
 
 We can now pass the `Portal object` from one fragment using a `Bundle`. Later on within the other fragment we can do a 
-`setFragmentResultListener` and call `bundle.getParcelable()<Portal>..`
+`setFragmentResultListener` and call `bundle.getParcelable<Portal>()`.
 
 Clicking on a `Student Portal` should open the portal URL using [Custom Chrome Tabs](
-https://developer.chrome.com/multidevice/android/customtabs)
+https://developer.chrome.com/multidevice/android/customtabs).
 
-
-How to implement a `click listener` for a recyclerview can be found [here](
-https://www.andreasjakl.com/recyclerview-kotlin-style-click-listener-android)
+How to implement a `clickListener` for a recyclerview can be found [here](
+https://www.andreasjakl.com/recyclerview-kotlin-style-click-listener-android).
 
 ## Solution
 Now, you are on your own. There is no solution provided. Good Luck!
