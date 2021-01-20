@@ -37,7 +37,7 @@ Firstly, download and install [Android Studio](https://developer.android.com/stu
 4. Choose API 23.
 5. Press finish getting started.
 
-We want you to have every example and task on Gitlab with make to see that you are making frequent commits so at
+We want you to have every example and task on Gitlab, and we want to see that you are making frequent commits so at
 this stage you should also add the project to Gitlab.  The process is not as straightforward as using Github because 
 you need to create the Gitlab project and then link it using the URL.  
 You can follow this short [tutorial](https://suragch.medium.com/how-to-add-an-android-studio-project-to-gitlab-b4318e19fe7c)
