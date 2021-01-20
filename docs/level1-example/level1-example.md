@@ -29,13 +29,18 @@ can always check [Github](https://github.com/Marcellis/MadLevel1Example) where y
 
 Firstly, download and install [Android Studio](https://developer.android.com/studio).  
 
-Once you have successfully downloaded and installed Android Studio you need to "Start a new Project":
+"Start a new Project":
 
 1. Select the ‘Empty Activity’.
 2. Name the ‘MadLevel1Example’.
 3. Choose language ‘Kotlin’.
 4. Choose API 23.
 5. Press finish getting started.
+
+We want you to have every example and task on Gitlab, and we want to see that you are making frequent commits so at
+this stage you should also add the project to Gitlab.  The process is not as straightforward as using Github because 
+you need to create the Gitlab project and then link it using the URL.  
+You can follow this short [tutorial](https://suragch.medium.com/how-to-add-an-android-studio-project-to-gitlab-b4318e19fe7c)
 
 ### Emulator
 
@@ -44,7 +49,7 @@ This is the best option if you do not have a high spec machine to develop your c
 The emulator can be very slow but is a good option if you have a fast machine or don't have an Android device.
 
 Positive
-: Run the app to validate that the emulator and the Android SDK are working properly.
+: Run the app to validate that the emulator and Android SDK are working properly.
 
 ### Adding assets to the project
 
@@ -228,12 +233,11 @@ The method `getString(..)` is used to retrieve a `String` from the `strings.xml`
 A `Toast` message is made using `Toast.makeText` using the `Context` (the Activity), 
 a `String` for the message and a Length.
 
-## Pushing to Github!
+## Finishing your app!
 
 Congratulations🎉, you completed your first app for this level!
 
-Per level there are three apps, once you're done with an app push it to **it's own** Github repository. When you do all
+Per level there are three apps and as we said at the beginning of this tutorial, each app should be in  **its own** 
+Githlab repository. When you have done all
 the levels you'll end up with 21 repositories.
-
-Positive
-: See this [link](https://medium.com/code-yoga/how-to-link-android-studio-with-github-312037a13b99) on how to use git with Android Studio
+Make sure that your version of this example is committed on Gitlab. 
