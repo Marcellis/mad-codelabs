@@ -290,7 +290,7 @@ Below the code to add to the addReminder method.
 private fun addReminder(reminder: String) {
    if (reminder.isNotBlank()) {
        reminders.add(Reminder(reminder))
-       reminderAdapter.notifyDataSetChanged()`
+       reminderAdapter.notifyDataSetChanged()
        binding.etReminder.text?.clear()
    } else {
        Snackbar.make(binding.etReminder, "You must fill in the input field!", Snackbar.LENGTH_SHORT).show()
