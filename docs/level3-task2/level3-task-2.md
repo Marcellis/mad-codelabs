@@ -15,7 +15,7 @@ We need to build an application where you can manage all the portals (websites) 
 is used to manage this list. The other screen is responsible for adding a portal. The portals don’t currently need to be stored, 
 that something we will learn in the next level. This is an example of how the end result should look:
 
-<img src="assets/level3task2.png" width="530" height="450"/>
+<img src="assets/level3task2.gif" width="530" height="450"/>
 
 ## Hints
 
