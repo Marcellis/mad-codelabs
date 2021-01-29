@@ -309,7 +309,7 @@ Note the use of the `?` mark. This means that the variable `etReminder.text` is 
 if it is null nothing happens and the next statement is executed. With `!!`, if the value is a null object a `NullPointerException` 
 will be thrown, and the program will crash.
 
-In the `initViews` method where the `onClickListener` for the `FloatingActionButton` has been moved to, 
+In the `initViews` method where the `onClickListener` for the `Button` has been moved to, 
 the `addReminder` method is invoked using the text from the inputField which is retrieved using `etReminder.text.toString()`. 
 
 Positive
@@ -374,7 +374,7 @@ Positive
 : The last step is to attach the `ItemTouchHelper` to the RecyclerView, do this in the `initViews` method.
 
 ``` kotlin
-   createItemTouchHelper().attachToRecyclerView(rvReminders)
+   createItemTouchHelper().attachToRecyclerView(binding.rvReminders)
 ```
 
 `ItemTouchHelper` has a method called `attachToRecyclerView` which is used to attach the `ItemTouchHelper` to the `rvReminders` RecyclerView.
