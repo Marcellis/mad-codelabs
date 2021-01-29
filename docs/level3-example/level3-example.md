@@ -43,16 +43,7 @@ def fragment_version = "1.3.0-alpha06"
 implementation "androidx.fragment:fragment-ktx:$fragment_version"
 ```
 
-We will also be using view binding for this example.
-
-```kotlin
-android {
-    ...
-    buildFeatures {
-        viewBinding = true
-    }
-}
-```
+We will also be using view binding for this example, so enable this.
 
 ## Some refactoring
 
