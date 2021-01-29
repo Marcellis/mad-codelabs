@@ -13,19 +13,14 @@ analytics account: UA-180951198-1
 
 ### Requirements
 
-When a user saves reminders, the reminder will be gone when the app is reopened. We need to store the Reminders in a local database. 
+When a user saves reminders, the reminder will be gone when the app is reopened. We need to store the reminders in a local database. 
 
 ### Solution 
 
-Below you will find the necessary steps to build this app. If you encounter problems you can always check 
-[github](https://github.com/Marcellis/MadLevel4Example) where you can find the whole solution.
+In this course you will find the necessary steps to build this app. If you encounter problems you can always check 
+[github](https://github.com/Marcellis/MadLevel4Example) where you can find the whole solution (and XML layout files for this course).
 
 The starting point is the result of the level 3 demo.
-
-### Video recording
-
-For this example, a video recording is available. In the recording, an expert performs the steps below. 
-The recording can be found here: [Mad level 4 Example video recording](https://www.youtube.com/watch?v=7rlhXhl75oo&feature=youtu.be)
 
 ### Configuration and Build
 
@@ -47,7 +42,7 @@ apply plugin: 'kotlin-kapt'
 ...
 ```
 
-Also the following dependencies should be added to the `app/build.gradle`
+Also the following dependencies should be added to the `app/build.gradle`.
 
 ```kotlin
 // Room
@@ -60,7 +55,7 @@ implementation "androidx.room:room-runtime:$room_version"
 ```
 
 Positive
-: More info about kapt can be found [here](https://kotlinlang.org/docs/reference/kapt.html)
+: More info about kapt can be found [here](https://kotlinlang.org/docs/reference/kapt.html).
 
 
 ## Implementing and configuring the Room database
@@ -91,7 +86,7 @@ data class Reminder(
 `Room` uses annotations to define configurations for persisting the objects in its database. 
 
 Using the annotation `@Entity` we have defined that this is an entity that needs to be stored in the database. 
-Using `tableName` we provide Room with a tableName we want to store this entity in. By default it will use the name of the object (Reminder).
+Using `tableName` we provide Room with a tableName we want to store this entity in. By default it will use the name of the object (`Reminder`).
 
 As you may know databases need a primary key. We want room to auto generate the id. 
 It’s also marked as nullable with the question mark so that it’s optional in the constructor.
@@ -104,11 +99,11 @@ Room creates an `SQLite` database using all objects annotated with `@Entity`.
 ### Create the Reminder Data Access Object (DAO)
 
 To get access to the Room database we are using a `DAO`.
-- Create an `interface “ReminderDao”`. Annotate it with `@Dao`
-- Add a method `getAllReminders` and annotate it with `@Query`
-- Add a method `insertReminder` and annotate it with `@Insert`
-- Add a method `deleteReminder` and annotate it with `@Delete`
-- Add a method `updateReminder` and annotate it with `@Update`
+- Create an interface `ReminderDao`. Annotate it with `@Dao`.
+- Add a method `getAllReminders` and annotate it with `@Query`.
+- Add a method `insertReminder` and annotate it with `@Insert`.
+- Add a method `deleteReminder` and annotate it with `@Delete`.
+- Add a method `updateReminder` and annotate it with `@Update`.
 
 ```kotlin
 @Dao
@@ -148,9 +143,9 @@ In this step we will create the class that will wire everything up and creates/m
 - Annotate the class to be a `RoomDatabase()`, declare the entities that belong in the database and set the version number. 
   Listing the entities will create tables in the database.
 - Define the `DAOs` that work with the database. Provide an abstract "getter" method for each `@Dao`.
-- Make the `ReminderRoomDatabase` a `singleton`.
+- Make the `ReminderRoomDatabase` a singleton.
 - Add the code to get a database using `RoomDatabase.Builder`. 
-- Refer to this [link](https://developer.android.com/training/data-storage/room)
+- Refer to this [link](https://developer.android.com/training/data-storage/room).
 
 ```kotlin
 @Database(entities = [Reminder::class], version = 1, exportSchema = false)
@@ -184,7 +179,7 @@ abstract class ReminderRoomDatabase : RoomDatabase() {
 }
 ```
 
-The code block to the left seems complicated to let’s break things down.
+The code block seems complicated to let’s break things down.
 
 We start by annotating the class with `@Database` which tells room that this class is a `RoomDatabase`. 
 Here we also define the entities that we want to store in this database (we only want to store Reminder entities). 
@@ -192,12 +187,12 @@ Here we also define the entities that we want to store in this database (we only
 An abstract method for getting the implementation room makes sure that  the `reminderDao` is added to the class.
 
 Because we want the database to be static we encapsulate the getDatabase function within a `companion object`. 
-If you need a function or a property to be tied to a class rather than to instances of it (similar to @staticmethod in Python), 
+If you need a function, or a property to be tied to a class rather than to instances of it (similar to `@staticmethod` in Python), 
 you can declare it inside a companion object.
 
 The Kotlin language does **not** have the keyword static, hence the introduction of 
 [companion object](https://kotlinlang.org/docs/tutorials/kotlin-for-py/objects-and-companion-objects.html#companion-objects). 
-Companion objects are also used in Google’s codelabs on [Room](https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#6)
+Companion objects are also used in Google’s codelabs on [Room](https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#6).
 
 Note that in this case the constant `DATABASE_NAME` is also defined inside the companion object rather than at the top level as we did before.
 
@@ -210,10 +205,10 @@ For instantiating the database we use a `Singleton` pattern because creation of 
 The last step of setting up our database is by making a Repository class.
 - Create a class called `ReminderRepository`.
 - Create and initialize a `ReminderDao` variable.
-- Create method implementations of the `reminderDao` methods (`getAllReminders()` returns `reminderDao.getAllReminders()`)
+- Create method implementations of the `reminderDao` methods (`getAllReminders()` returns `reminderDao.getAllReminders()`).
 
 ```kotlin
- class ReminderRepository(context: Context) {
+class ReminderRepository(context: Context) {
 
     private var reminderDao: ReminderDao
 
@@ -234,7 +229,6 @@ The last step of setting up our database is by making a Repository class.
         reminderDao.deleteReminder(reminder)
     }
 
-
     fun updateReminder(reminder: Reminder) {
         reminderDao.updateReminder(reminder)
     }
@@ -249,7 +243,7 @@ The class constructor takes a `Context` object because we need this to access th
 using the abstract method we added in the `ReminderRoomDatabase` class.
 
 The methods will use the `reminderDao` methods to make the actual operations. For example `insertReminder` will insert a 
-reminder in the database using the `reminderDao` insertReminder method.
+reminder in the database using the `reminderDao.insertReminder()` method.
 
 ## Modifying ReminderFragment
 
@@ -264,45 +258,48 @@ it uses the database for retrieving and storing the data.
 ```kotlin
 class RemindersFragment : Fragment() {
 
-   private lateinit var reminderRepository: ReminderRepository
+  private var _binding: FragmentRemindersBinding? = null
+  private val binding get() = _binding!!
 
-   //populate some test data in Reminders list
-   private var reminders: ArrayList<Reminder> = arrayListOf()
+  private lateinit var reminderRepository: ReminderRepository
 
-   private lateinit var reminderAdapter: ReminderAdapter
-   private lateinit var viewManager: RecyclerView.LayoutManager
+  private val reminders = arrayListOf<Reminder>()
+  private val reminderAdapter = ReminderAdapter(reminders)
 
-   override fun onCreateView(
-       inflater: LayoutInflater, container: ViewGroup?,
-       savedInstanceState: Bundle?
-   ): View? {
-       // Inflate the layout for this fragment
-       return inflater.inflate(R.layout.fragment_reminders, container, false)
+  override fun onCreateView(
+    inflater: LayoutInflater, container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    _binding = FragmentRemindersBinding.inflate(inflater, container, false)
+    return binding.root
+  }
 
-   }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
 
-   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       super.onViewCreated(view, savedInstanceState)
+    initViews()
 
+    observeAddReminderResult()
 
-       initViews()
-       observeAddReminderResult()
+    reminderRepository = ReminderRepository(requireContext())
+    getRemindersFromDatabase()
+  }
 
-       reminderRepository = ReminderRepository(requireContext())
-       getRemindersFromDatabase()
+  override fun onDestroy() {
+    super.onDestroy()
+    _binding = null
+  }
 
-   }
-
-
-   private fun getRemindersFromDatabase() {
+  private fun getRemindersFromDatabase() {
       val reminders = reminderRepository.getAllReminders()
       this@RemindersFragment.reminders.clear()
       this@RemindersFragment.reminders.addAll(reminders)
       reminderAdapter.notifyDataSetChanged()
-   }
+    }
+  }
 
- 
-   ...
+  ...
+}
 ```
 
 A method called `getRemindersFromDatabase()` is made which will get all the reminders from the database using the repository, 
@@ -322,8 +319,8 @@ private fun observeAddReminderResult() {
       bundle.getString(BUNDLE_REMINDER_KEY)?.let {
            val reminder = Reminder(it)
 
-           //reminders.add(reminder)
-           //reminderAdapter.notifyDataSetChanged()
+           // reminders.add(reminder)
+           // reminderAdapter.notifyDataSetChanged()
            reminderRepository.insertReminder(reminder)
            getRemindersFromDatabase() 
        } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
@@ -357,8 +354,8 @@ private fun createItemTouchHelper(): ItemTouchHelper {
        // Callback triggered when a user swiped an item.
        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
            val position = viewHolder.adapterPosition
-           reminders.removeAt(position)
-           reminderAdapter.notifyDataSetChanged()
+           // reminders.removeAt(position)
+           // reminderAdapter.notifyDataSetChanged()
 
            val reminderToDelete = reminders[position]
            reminderRepository.deleteReminder(reminderToDelete)
@@ -372,7 +369,7 @@ private fun createItemTouchHelper(): ItemTouchHelper {
 In `onSwiped()` the reminder is deleted from the database after which the reminders are loaded from the database again to update the user interface.
 
 Positive
-: Run the app! Add or remove a reminder and it will be persisted in the database! Close and re-open the app to check if the reminders are persisted.
+: Run the app! Add or remove a reminder, and it will be persisted in the database! Close and re-open the app to check if the reminders are persisted.
 
 ## Performing database operations on the background thread
 
@@ -380,7 +377,7 @@ In this step we move the database operations from the main (ui) thread to a back
 
 ### Remove allowing main thread queries
 
-- In `ReminderRoomDatabase` remove “allowMainThreadQueries” from the builder.
+- In `ReminderRoomDatabase` remove `.allowMainThreadQueries()` from the builder.
 
 ```kotlin
 fun getDatabase(context: Context): ReminderRoomDatabase? {
@@ -428,7 +425,7 @@ interface ReminderDao {
 }
 ```
 
-By adding the `suspend` keyword to the method we have specified that this  method cannot be called without using `Coroutines`.
+By adding the `suspend` keyword to the method we have specified that this method cannot be called without using `Coroutines`.
 
 You should notice that in the activities where we call the methods from the repositories Android Studio will give errors stating: 
 “Suspend function `getAllReminders` should be called only from a coroutine or another suspend function”
@@ -536,7 +533,7 @@ private fun observeAddReminderResult() {
 
 In `onSwiped()` we do the same thing. The coroutine is started using `launch` from a `CoroutineScope` object and passing 
 through the dispatcher we want to use. Then in the IO thread the reminder is deleted after which the 
-`getRemindersFromDatabase` is called to update the recyclerview.
+`getRemindersFromDatabase()` is called to update the recyclerview.
 
 The `observeAddReminderResult()` method also had to be modified because here the reminder is saved. All of the logic 
 has been moved within a `CoroutineScope` using the Main dispatcher. And the inserting of the reminder has been moved inside a IO dispatcher. 
@@ -544,4 +541,4 @@ has been moved within a `CoroutineScope` using the Main dispatcher. And the inse
 The reason why we have to start all the Coroutines inside a Main dispatcher is because it’s not possible to modify the user interface within an IO thread.  
 
 Positive
-: all done, test your app and push it to github! 
+: All done, test your app and push it to github! 
