@@ -22,11 +22,6 @@ We will be moving the adding of a reminder to a separate fragment. See the GIF b
 In this course you will find the necessary steps to build this app. If you encounter problems 
 you can always check the [github](https://github.com/Marcellis/madlevel3example) where you can find the whole solution.
 
-### Video recording
-
-For this example, a video recording is available. In the recording, an expert performs the steps below. 
-The recording can be found here: [Mad level 3 Example video recording](https://www.youtube.com/watch?v=PwqOmw0X_7E&feature=youtu.be)
-
 ## Create a new project
 
 ### Using a different project template
@@ -48,16 +43,7 @@ def fragment_version = "1.3.0-alpha06"
 implementation "androidx.fragment:fragment-ktx:$fragment_version"
 ```
 
-We will also be using view binding for this example.
-
-```kotlin
-android {
-    ...
-    buildFeatures {
-        viewBinding = true
-    }
-}
-```
+We will also be using view binding for this example, so enable this.
 
 ## Some refactoring
 
