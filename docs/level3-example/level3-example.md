@@ -297,6 +297,17 @@ The `initViews` method in the `RemindersFragment` will look like this.
     }
 ```
 
+Fragments outlive their views, this means that we need to clean up any references to the binding class instance of the fragment. We do this in the
+fragment's `onDestroyView()` method.
+
+
+```kotlin
+override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
+}
+```
+
 ### Edit res/navigation/nav_graph.xml
 
 First make sure that you have built the add reminder screen (see the image at the beginning of this tutorial) on the `fragment_add_reminder.xml`.
@@ -418,6 +429,11 @@ class AddReminderFragment : Fragment() {
         binding.btnAddReminder.setOnClickListener {
             onAddReminder()
         }
+    }
+    
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun onAddReminder() {

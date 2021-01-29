@@ -83,6 +83,15 @@ binding.btnStartRating.setOnClickListener {
 }
 ```
 
+- Don't forget to clean up references of the binding class instance of the fragment in the `onDestroyView()` method.
+
+```kotlin
+override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
+}
+```
+
 ## RatingFragment 
 
 ### Layout with a random game
@@ -135,6 +144,11 @@ class SummaryFragment : Fragment() {
         _binding = FragmentSummaryBinding.inflate(inflater, container, false)
         return binding.root
     }
+    
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
 ```
 
@@ -176,6 +190,11 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     }
 
     showRandomAssessableGame()
+}
+
+override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
 }
 
 private fun navigateToSummary() {
