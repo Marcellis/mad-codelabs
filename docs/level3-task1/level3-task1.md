@@ -43,7 +43,8 @@ def fragment_version = "1.3.0-alpha06"
 implementation "androidx.fragment:fragment-ktx:$fragment_version"
 ```
 
-Positive : We will also be using view binding for this example. By now you should know how to enable this in your project.
+Positive 
+: We will also be using view binding for this example. By now you should know how to enable this in your project.
 
 ## Reusing the Basic Activity template 
 
