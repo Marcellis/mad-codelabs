@@ -25,7 +25,7 @@ The result should look like the gif below. Add some questions to your app to tes
 ### You're on your own!
 
 Task 2 of each level doesn't provide you a solution nor step by step guidance. 
-When you are done, push to Github! 💥
+When you are done, push to GitLab! 💥
 
 Positive
 : **Optional** If a user clicks on an item you will get a sneak preview about whether the questions are good or false. See this [tutorial](https://youtu.be/wKFJsrdiGS8) on how to fix this.

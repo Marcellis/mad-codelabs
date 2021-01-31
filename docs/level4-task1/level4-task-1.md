@@ -463,4 +463,4 @@ Run the application again.
 Test all the implemented features.
 Congratulations! Next time in the supermarket you won’t forget anything anymore.
 
-Push the app to your Github Repository!
+Push the app to your GitLab Repository!

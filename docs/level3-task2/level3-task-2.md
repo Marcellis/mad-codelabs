@@ -37,4 +37,4 @@ https://www.andreasjakl.com/recyclerview-kotlin-style-click-listener-android).
 
 ## Solution
 Now, you are on your own. There is no solution provided. Good Luck!
-Push the app to your GitHub Repository.
+Push the app to your GitLab Repository.

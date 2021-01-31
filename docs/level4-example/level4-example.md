@@ -537,4 +537,4 @@ has been moved within a `CoroutineScope` using the Main dispatcher. And the inse
 The reason why we have to start all the Coroutines inside a Main dispatcher is because it’s not possible to modify the user interface within an IO thread.  
 
 Positive
-: All done, test your app and push it to github! 
+: All done, test your app and push it to GitLab! 

@@ -206,4 +206,4 @@ Positive
 
 Congratulations🎉, you completed your second recyclerview application!
 
-Push the App to Github! 
+Push the App to GitLab! 

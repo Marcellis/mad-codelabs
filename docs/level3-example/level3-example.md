@@ -544,7 +544,7 @@ createItemTouchHelper().attachToRecyclerView(binding.rvReminders)
 ```
 Now run the app, we are done!
 
-***Push the app to your Github repository.***
+***Push the app to your GitLab repository.***
 
 
 

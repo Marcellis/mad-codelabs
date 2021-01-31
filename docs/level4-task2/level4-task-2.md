@@ -51,7 +51,7 @@ Push the app to your GitLab Repository.
 As seen in the example images there are statistics displayed of how many wins, draws and losses the user has. 
 Whenever a user plays, the statistics should be updated. 
 When the game history is cleared then the statistics should also be cleared. 
-With the @Query annotation you can make all sorts of queries on the database. 
+With the `@Query` annotation you can make all sorts of queries on the database. 
 This is the preferred method of getting the statistics (**tip**: using a select count query).
 
 

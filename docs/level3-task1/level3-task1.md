@@ -324,5 +324,5 @@ he will exit the app.
 
 Positive
 : Now test the app! Go through the flow and try to navigate back and forth. Also check if you can’t navigate back to the 
-summary screen after completing the flow. When everything is working push your app to your Git repository!
+summary screen after completing the flow. When everything is working push your app to your GitLab repository!
 

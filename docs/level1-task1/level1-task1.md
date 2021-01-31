@@ -260,4 +260,4 @@ private fun initViews() {
 
 ## Pushing to Github!
 
-Congratulations🎉, you completed your second app of this level! Push it to Github!
+Congratulations🎉, you completed your second app of this level! Push it to GitLab!
