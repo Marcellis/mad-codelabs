@@ -43,7 +43,7 @@ def fragment_version = "1.3.0-alpha06"
 implementation "androidx.fragment:fragment-ktx:$fragment_version"
 ```
 
-Positive 
+Positive
 : We will also be using view binding for this example. By now you should know how to enable this in your project.
 
 ## Reusing the Basic Activity template 
@@ -164,7 +164,7 @@ The blue lines in the image below highlight the added actions:
 
 <img src="assets/nav_graph.png"/>
 
-This will generate two `<action .. />` attributes in the XML.
+This will generate two `<action/>` attributes in the XML.
 
 ### Sending arguments to the SummaryFragment
 
