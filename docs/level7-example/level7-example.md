@@ -719,7 +719,7 @@ the user back to the `HomeFragment`, otherwise we show a Toast message!
 
 Positive
 : Test the app, try to see if it also works with internet switched on and off! If everything is working push to your
-github repository 
+GitLab repository 
 
 
 

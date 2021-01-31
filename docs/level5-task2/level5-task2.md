@@ -44,7 +44,7 @@ The app should look something like this:
 ### Solution
 
 Now, you are on your own. There is no solution provided. Good Luck!
-Push the app to your GitHub Repository.
+Push the app to your GitLab Repository.
 
 ### Optional
 

@@ -772,5 +772,5 @@ The `description` is populated using the description from the `Profile` object.
 The `ImageView` has been set using the `imageUri` from the `Profile` object.
 
 Positive
-: That’s it, test the app and see if all the functionalities work! If everything is working push to your github
-repository
+: That’s it, test the app and see if all the functionalities work! If everything is working push to your GitLab
+repository.

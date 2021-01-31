@@ -494,4 +494,4 @@ app.
 
 Positive
 : Now run the app, make sure to test the error state by turning off your internet in the emulator(see GIF). If
-everything is working push to your Github repository
+everything is working push to your GitLab repository

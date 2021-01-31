@@ -38,4 +38,4 @@ The app has the following requirements:
 Now, you are on your own. There is no solution provided. Good Luck!
 
 Positive
-: Push the app to your Github when it’s finished
+: Push the app to your GitLab when it’s finished!

@@ -353,6 +353,6 @@ android:scaleType="centerCrop"
 
 Positive
 : Run the app. You should be able to click on the colors and get the color name displayed as a Snackbar message. Push
-the app to your Github repository.
+the app to your GitLab repository.
 
 

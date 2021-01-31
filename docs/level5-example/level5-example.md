@@ -312,4 +312,4 @@ class AddReminderFragment : Fragment() {
 ```
 
 Positive
-: All done Run the app and push to your Github Repository
+: All done Run the app and push to your GitLab Repository

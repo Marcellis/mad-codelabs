@@ -402,7 +402,7 @@ This could also be done for a loading state (displaying a loading circle when th
 We also access the `viewModel` for the current Note so we can pre-fill the text fields with the title and text from that Note!
 
 Positive
-: All done Run the app, check if all the functionalities are working and push to your Github Repository
+: All done Run the app, check if all the functionalities are working and push to your GitLab Repository
 
 
 

@@ -100,4 +100,4 @@ private fun calculateSpanCount(): Int {
 ```
 
 Positive
-: Push the app to your Github when it’s finished
+: Push the app to your GitLab when it’s finished
