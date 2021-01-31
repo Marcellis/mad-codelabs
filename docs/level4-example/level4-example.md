@@ -241,9 +241,9 @@ using the abstract method we added in the `ReminderRoomDatabase` class.
 The methods will use the `reminderDao` methods to make the actual operations. For example `insertReminder` will insert a 
 reminder in the database using the `reminderDao.insertReminder()` method.
 
-## Modifying ReminderFragment
+## Modifying RemindersFragment
 
-Now that the database has been set up and configured properly we can make some changes in the `ReminderFragment` so that 
+Now that the database has been set up and configured properly we can make some changes in the `RemindersFragment` so that 
 it uses the database for retrieving and storing the data.
 
 ### Get reminders from the database
@@ -291,7 +291,6 @@ class RemindersFragment : Fragment() {
       this@RemindersFragment.reminders.clear()
       this@RemindersFragment.reminders.addAll(reminders)
       reminderAdapter.notifyDataSetChanged()
-    }
   }
 
   ...
@@ -319,7 +318,7 @@ private fun observeAddReminderResult() {
            // reminderAdapter.notifyDataSetChanged()
            reminderRepository.insertReminder(reminder)
            getRemindersFromDatabase() 
-       } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
+       } ?: Log.e("RemindersFragment", "Request triggered, but empty reminder text!")
 
    }
 }
@@ -384,7 +383,7 @@ fun getDatabase(context: Context): ReminderRoomDatabase? {
                    context.applicationContext,
                    ReminderRoomDatabase::class.java, DATABASE_NAME
                )
-                   .allowMainThreadQueries()
+//                   .allowMainThreadQueries()
                    .build()
            }
        }
@@ -521,7 +520,7 @@ private fun observeAddReminderResult() {
                }
                getRemindersFromDatabase()
            }
-       } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
+       } ?: Log.e("RemindersFragment", "Request triggered, but empty reminder text!")
 
    }
 }
