@@ -31,15 +31,11 @@ On this page it is noted that we should also add the `kapt` plugin into the proj
 `kotlin-kapt` Gradle plugin into the `app/build.gradle` file. Below the addition can be found. 
 
 ```kotlin
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'kotlin-kapt'
-
-...
+plugins {
+  id 'com.android.application'
+  id 'kotlin-android'
+  id 'kotlin-kapt'
+}
 ```
 
 Also the following dependencies should be added to the `app/build.gradle`.
@@ -51,7 +47,7 @@ kapt "androidx.room:room-compiler:$room_version"
 implementation "androidx.room:room-runtime:$room_version"
 
 // Kotlin Extensions and Coroutines support for Room - also needed in this tutorial
-  implementation "androidx.room:room-ktx:$room_version"
+implementation "androidx.room:room-ktx:$room_version"
 ```
 
 Positive

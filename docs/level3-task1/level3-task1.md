@@ -164,7 +164,7 @@ The blue lines in the image below highlight the added actions:
 
 <img src="assets/nav_graph.png"/>
 
-This will generate two `<action/>` attributes in the XML.
+This will generate two `action` attributes in the XML.
 
 ### Sending arguments to the SummaryFragment
 
