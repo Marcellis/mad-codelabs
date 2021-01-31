@@ -286,8 +286,8 @@ populate the shopping list and notify the adapter about the data set changes.
 The reason why we have to start all the Coroutines inside a Main dispatcher is because it’s not possible to modify 
 the user interface within an IO thread.  
 
-It is better practice defining a single CoroutineScope as a variable and then use that to launch a coroutine. 
-As shown in the second code block. We will be using that implementation in the next steps.
+It is better practice defining a single `CoroutineScope` as a variable and then use that to launch a coroutine. 
+This is shown in the code block with the `mainScope` variable.
 
 Positive
 : There are no products in the Room database yet so if you run the app now no errors should occur, but the list should be empty.
