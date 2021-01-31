@@ -43,7 +43,8 @@ def fragment_version = "1.3.0-alpha06"
 implementation "androidx.fragment:fragment-ktx:$fragment_version"
 ```
 
-We will also be using view binding for this example, so enable this.
+Positive
+: We will also be using view binding for this example. By now you should know how to enable this in your project.
 
 ## Some refactoring
 
@@ -84,7 +85,7 @@ app:srcCompat="@android:drawable/ic_input_add" />
 and add: 
 
 ``` xml
-android:tint="@android:color/white"
+app:tint="@android:color/white"
 ```
 
 to change the plus sign colour to white. 
@@ -99,7 +100,7 @@ and for “tint” select `@android:color/white`.
 Change the layout of `RemindersFragment` and `AddReminderFragment` so that it matches the GIF displayed within the overview section. 
 In the `fragment_reminders.xml` add the `TextViews` and the `RecyclerView` and constrain these properly. 
 And similar for `fragment_add_reminder.xml`. Also create file `item_reminder.xml`, representing the elements in the recyclerview as we did before. 
-`Fragment_reminders.xml` and `fragment_add_reminder.xml` should be modified by using the Design editor. `item_reminder.xml` 
+`fragment_reminders.xml` and `fragment_add_reminder.xml` should be modified by using the Design editor. `item_reminder.xml` 
 will be modified below. The resulting code should be similar to that shown below. 
 Keep in mind that the names of the variables are also used in the Kotlin code afterwards.
 
@@ -107,7 +108,7 @@ Keep in mind that the names of the variables are also used in the Kotlin code af
 
 ``` xml
 <resources>
-   ……..
+   ...
    <string name="reminders">Reminders</string>
    <string name="see_below">See below for all your reminders</string>
    <string name="add_your_reminder">Add your reminder</string>
@@ -116,99 +117,99 @@ Keep in mind that the names of the variables are also used in the Kotlin code af
 </resources>
 ```
 
-### Fragment_reminders.xml
+### fragment_reminders.xml
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:app="http://schemas.android.com/apk/res-auto"
-   xmlns:tools="http://schemas.android.com/tools"
-   android:layout_width="match_parent"
-   android:layout_height="match_parent"
-   tools:context=".RemindersFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RemindersFragment">
 
-   <TextView
-       android:id="@+id/textView2"
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       android:padding="16dp"
-       android:text="@string/reminders"
-       android:textSize="30sp"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/reminders"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-   <TextView
-       android:id="@+id/textView3"
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       android:padding="16dp"
-       android:text="@string/see_below"
-       android:textSize="24sp"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/see_below"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/rvReminders"
-       android:layout_width="0dp"
-       android:layout_height="0dp"
-       android:padding="16dp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReminders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-### Fragment_add_reminder.xml
+### fragment_add_reminder.xml
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:app="http://schemas.android.com/apk/res-auto"
-   xmlns:tools="http://schemas.android.com/tools"
-   android:layout_width="match_parent"
-   android:layout_height="match_parent"
-   tools:context=".AddReminderFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddReminderFragment">
 
-   <TextView
-       android:id="@+id/textView"
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       android:padding="16dp"
-       android:text="@string/add_your_reminder"
-       android:textSize="30sp"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/add_your_reminder"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-   <com.google.android.material.textfield.TextInputLayout
-       android:id="@+id/textInputLayout"
-       android:layout_width="409dp"
-       android:layout_height="wrap_content"
-       android:padding="16dp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/textView">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
-       <com.google.android.material.textfield.TextInputEditText
-           android:id="@+id/etReminderName"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:hint="@string/reminder_name"
-           android:textSize="24sp" />
-   </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etReminderName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reminder_name" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-   <Button
-       android:id="@+id/btnAddReminder"
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       android:layout_margin="32dp"
-       android:text="@string/add_your_reminder"
-       android:textSize="30sp"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+    <Button
+        android:id="@+id/btnAddReminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="@string/add_your_reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
@@ -305,12 +306,6 @@ private fun initViews() {
     binding.rvReminders.layoutManager =
         LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     binding.rvReminders.adapter = reminderAdapter
-    binding.rvReminders.addItemDecoration(
-        DividerItemDecoration(
-            context,
-            DividerItemDecoration.VERTICAL
-        )
-    )
 }
 ```
 
@@ -321,7 +316,7 @@ Navigation between fragments is defined by an xml file called `nav_graph.xml`.
 This can be seen in the directory `/res/navigation`.  This file contains all the definitions of fragments and the related navigation actions. 
 The navigation component will parse this file and build a graph for the navigation flow. The file has already been generated because the basic activity uses fragments.  
 Delete the existing `nav_graph.xml` file and then create a new one.  In the design view of the `nav_graph.xml` file add a new destination 
-using the `New Destination` button and select `fragment_reminders`.  You will see that a view of the fragments reminders is displayed with a home symbol.  
+using the `New Destination` button (Frame with green plus sign) and select `fragment_reminders`.  You will see that a view of the fragments reminders is displayed with a home symbol.  
 Now add the other fragment.  Select the home fragment again and then drag to the `addReminderFragment` to create a navigation between the two.  
 The end result looks like the screen below: 
 
@@ -362,10 +357,10 @@ The `NavController` can only navigate between actions and fragments defined in t
 
 In the `clickListener` we’re specifying the action we defined in step 4.1.
 
-Run the app and you see that clicking on the `FAB` results in the Add Reminder Fragment being displayed. 
+Run the app and you see that clicking on the `FAB` results in the `AddReminderFragment` being displayed. 
 You will notice that the `FAB` is still visible.  This is because the Fragments are sort of swapped into the main screen at run time.   
-If you try clicking the `FAB` when the Add Reminder Fragment is displayed it causes the application to crash.  
-We need to hide the FAB when the Add Reminder Fragment is visible.  For this we’ll make a little helper method in the `MainActivity`:
+If you try clicking the `FAB` when the `AddReminderFragment` is displayed it causes the application to crash.  
+We need to hide the FAB when the `AddReminderFragment` is visible.  For this we’ll make a little helper method in the `MainActivity`:
 
 ``` kotlin
 private fun fabToggler() {
@@ -470,7 +465,7 @@ First, set a `clickListener` on the button which calls a method called `onAddRem
 Then in the `onAddReminder()` method we do three things:
 1. Validate the user input.
 2. Fragments are placed on a so-called `backstack`. This is a complex stack and it’s a difficult job to keep state
-and pass data between these fragments. For fragments, we can use `setFragmentResult(..)` with the latest alpha version of the fragment dependency ([Step 2](https://mad-codelabs.azurewebsites.net/codelabs/level3-example/index.html?index=..%2F..index#1)). 
+and pass data between these fragments. For fragments, we can use `setFragmentResult(..)` with the latest alpha version of the fragment dependency (see step 2 of this tutorial). 
 After submitting in the `AddReminderFragment` we can set an object (for us a String) wrapped in a `Bundle`. 
 Later on we can listen for this result in the `RemindersFragment`. Also note we pass a `Pair` with the key and value, nice helper class of Kotlin!
 3. Lastly, we “pop” the backstack. This removes the current fragment (`AddReminderFragment`) and brings us back to the `RemindersFragment`.
