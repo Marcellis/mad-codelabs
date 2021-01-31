@@ -246,8 +246,39 @@ card_view:cardUseCompatPadding="true">
 You can reuse the `adapter` and `model` from the previous level ( [Level 2 Example](https://github.com/Marcellis/MadLevel2Example/tree/master/app/src/main/java/com/example/madlevel2example) ). 
 So copy and paste `Reminder.kt` and `ReminderAdapter.kt`.
 
+Using view binding in fragments has to be set up a bit different than in activities. Instead of binding the view in the `onCreate(..)`
+method, this will be done in the `onCreateView(..)` method, as shown below.
+
+```kotlin
+class RemindersFragment : Fragment() {
+
+    private var _binding: FragmentRemindersBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentRemindersBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    
+    ...
+}
+```
+
+Fragments outlive their views, this means that we need to clean up any references to the binding class instance of the fragment. We do this in the
+fragment's `onDestroyView()` method.
+
+```kotlin
+override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
+}
+```
+
 As far as accessing these, coupling was previously done in the `MainActivity`, now you will have to do that in the `RemindersFragment`. 
-The `onViewCreated(..)` method should be used instead of `onCreate()`.
+The `onViewCreated(..)` method should be used instead of `onCreate(..)`.
 
 First create two variables in `RemindersFragment`:
 
@@ -256,7 +287,7 @@ private val reminders = arrayListOf<Reminder>()
 private val reminderAdapter = ReminderAdapter(reminders)
 ```
 
-and in `onViewCreated` call the `initViews` method.
+and in `onViewCreated(..)` call the `initViews()` method.
 
 ``` kotlin
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -269,28 +300,17 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 The `initViews` method in the `RemindersFragment` will look like this.
 
 ```kotlin
-    private fun initViews() {
-        // Initialize the recycler view with a linear layout manager, adapter
-        binding.rvReminders.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        binding.rvReminders.adapter = reminderAdapter
-        binding.rvReminders.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                DividerItemDecoration.VERTICAL
-            )
+private fun initViews() {
+    // Initialize the recycler view with a linear layout manager, adapter
+    binding.rvReminders.layoutManager =
+        LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+    binding.rvReminders.adapter = reminderAdapter
+    binding.rvReminders.addItemDecoration(
+        DividerItemDecoration(
+            context,
+            DividerItemDecoration.VERTICAL
         )
-    }
-```
-
-Fragments outlive their views, this means that we need to clean up any references to the binding class instance of the fragment. We do this in the
-fragment's `onDestroyView()` method.
-
-
-```kotlin
-override fun onDestroyView() {
-    super.onDestroyView()
-    _binding = null
+    )
 }
 ```
 

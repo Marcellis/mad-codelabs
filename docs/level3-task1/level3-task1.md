@@ -73,6 +73,8 @@ Positive
 Toggle between chain modes to get the right positioning between the elements! Chains are mostly useful when trying to group
 a set of elements and either `pack` them or `spread` them across a view.
 
+- Bind your view in the `onCreateView(..)` method.
+
 - Make sure that in `onViewCreated(..)` in the `StartFragment` you are navigating to the `RatingFragment` on the button click. 
 See the code below, make sure to test it!
 

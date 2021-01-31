@@ -13,7 +13,7 @@ analytics account: UA-180951198-1
 
 We need to build an application where you can manage all the portals (websites) you need for your study: a recyclerview 
 is used to manage this list. The other screen is responsible for adding a portal. The portals don’t currently need to be stored, 
-that something we will learn in the next level. This is an example of how the end result should look:
+that is something we will learn in the next level. This is an example of how the end result should look:
 
 <img src="assets/level3task2.gif" width="265" height="450"/>
 
