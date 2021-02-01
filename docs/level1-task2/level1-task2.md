@@ -25,4 +25,4 @@ The user can try again until all the answers are right. The layout file should b
 ### You're on your own!
 
 Task 2 of each level doesn't provide you a solution nor step by step guidance. 
-When you are done, push to Github! 💥
+When you are done, push to the Gitlab repo that your teacher has created for you! 💥
