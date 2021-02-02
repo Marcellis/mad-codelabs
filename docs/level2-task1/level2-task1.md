@@ -31,6 +31,9 @@ Make sure once you get started with this example the following steps were taken 
 4. Choose API 23.
 5. Press finish to get started.
 
+
+You can find the images [here](https://docs.google.com/uc?export=download&id=1B_vufZWXvV_I79FlTdlP9I-ehkCMByaO). 
+
 ## Setting up the Model and Adapter
 
 ### Create a place model
