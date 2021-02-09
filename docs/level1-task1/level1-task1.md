@@ -39,7 +39,7 @@ Once you have successfully downloaded and installed Android Studio you need to â
 
 ### Enable viewbinding
 
-Just like the example, make sure to enable viewbinding in `app.gradle`.
+Just like the example, make sure to enable viewbinding in `app/build.gradle`.
 
 ### Import drawables
 
