@@ -104,7 +104,7 @@ override fun onDestroyView() {
 1. Alter the `fragment_rating.xml` so that it matches the image above. The game name will be randomized later.
 
 Positive
-: You can use the `<RatingBar>` element for the stars
+: You can use the <RatingBar> element for the stars
 
 2. Now in `RatingFragment` we want to show a randomized game name in the `TextView`. Add the following function.
 
