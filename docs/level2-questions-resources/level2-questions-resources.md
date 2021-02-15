@@ -12,17 +12,15 @@ analytics account: UA-180951198-1
 ## MAD Level 2 - Questions & Resources
 
 ### Questions
-- What is the difference of a staggered grid comparing to a normal grid?
+- What is the difference between a staggered grid and a normal grid?
 - What is the purpose of logcat?  
 - What kind of gestures are available?
 - What was the predecessor of the recyclerview?
 - What is the difference between a `Toast` and `Snackbar` ?
-- What is the purpose of the existence of “optionals” (represented by the `?` mark) in the Kotlin language? And what does the `!!` mark mean?
+- What is the purpose of the existence of “optionals” (represented by the `?` mark) in the Kotlin language? What does the `!!` mark mean?
 - What is the purpose of a “data class” in Kotlin?
-- What is a `companion object` in Kotlin? Explain the difference (if any) with a `static final` and with a `val`, and when to use which constant type.
-- Explain what `StaggeredGridLayout` is.
-- How can you log the value of variables in the Android Studio system log, and how can you find them back?
-- Describe how you can debug your app in Android Studio, e.g. by setting breakpoints and inspecting the value of variables.
+- What is a `companion object` in Kotlin? Explain the difference (if any) between a `static final` and a `val`, and explain when to use which constant type.
+- Describe how you can debug your app in Android Studio.
 
 ### Resources
 

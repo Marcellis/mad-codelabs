@@ -13,9 +13,13 @@ analytics account: UA-180951198-1
 
 ### Questions
 
-- Which stages of an activity lifecycle exists?
+- What is a Fragment? 
+- What is the difference between an Activity and a Fragment?
+- What are the stages of the lifecycle of an Activity?
+- How do we set navigation between Fragments?
+- How do we pass values between Fragments?    
 - Which are the two kind of intents, and what is the difference?
-- What is the difference between Parcelables and Serializables?
+- What are Parcelable and Serializable and what is the difference between them?
 - What is the purpose of the analyzer?
 
 ### Resources
