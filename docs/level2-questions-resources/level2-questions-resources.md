@@ -19,7 +19,7 @@ analytics account: UA-180951198-1
 - What is the difference between a `Toast` and `Snackbar` ?
 - What is the purpose of the existence of “optionals” (represented by the `?` mark) in the Kotlin language? What does the `!!` mark mean?
 - What is the purpose of a “data class” in Kotlin?
-- What is a `companion object` in Kotlin? Explain the difference (if any) between a `static final` and a `val`, and when to use which constant type.
+- What is a `companion object` in Kotlin? Explain the difference (if any) between a `static final` and a `val`, and explain when to use which constant type.
 - Describe how you can debug your app in Android Studio.
 
 ### Resources
