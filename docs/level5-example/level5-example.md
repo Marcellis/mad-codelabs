@@ -43,17 +43,17 @@ In the `DAO` and `repository` remove the `suspend` keyword and change the type t
 @Dao
 interface ReminderDao {
 
-   @Query("SELECT * FROM reminderTable")
-   suspend fun getAllReminders(): LiveData<List<Reminder>>
+    @Query("SELECT * FROM reminderTable")
+    fun getAllReminders(): LiveData<List<Reminder>>
 
-   @Insert
-   fun insertReminder(reminder: Reminder)
+    @Insert
+    suspend fun insertReminder(reminder: Reminder)
 
-   @Delete
-   suspend fun deleteReminder(reminder: Reminder)
+    @Delete
+    suspend fun deleteReminder(reminder: Reminder)
 
-   @Update
-   suspend fun updateReminder(reminder: Reminder)
+    @Update
+    suspend fun updateReminder(reminder: Reminder)
 
 }
 ```
@@ -62,13 +62,13 @@ class ReminderRepository(context: Context) {
    private var reminderDao: ReminderDao?
 
    init {
-       val reminderRoomDatabase = ReminderRoomDatabase.getReminderRoomDatabase(context)
-       reminderDao = reminderRoomDatabase?.reminderDao()
-   }
+        val reminderRoomDatabase = ReminderRoomDatabase.getDatabase(context)
+        reminderDao = reminderRoomDatabase!!.reminderDao()
+    }
 
    fun getAllReminders() : LiveData<List<Reminder>> {
-       return reminderDao?.getAllReminders() ?: MutableLiveData(emptyList())
-   }
+        return reminderDao?.getAllReminders()
+    }
 
    suspend fun insertReminder(reminder: Reminder) {
        reminderDao?.insertReminder(reminder)
@@ -135,118 +135,113 @@ We also don’t need the `Dispatcher.Main` scope anymore because in the `ViewMod
 
 ```kotlin
 class RemindersFragment : Fragment() {
+   private var _binding: FragmentRemindersBinding? = null
+   private val binding get() = _binding!!
 
-//  private lateinit var reminderRepository: ReminderRepository
+   //private lateinit var reminderRepository: ReminderRepository
 
-  private var reminders: ArrayList<Reminder> = arrayListOf()
+   private val reminders = arrayListOf<Reminder>()
+   private val reminderAdapter = ReminderAdapter(reminders)
 
-  private lateinit var reminderAdapter: ReminderAdapter
-  private lateinit var viewManager: RecyclerView.LayoutManager
+   private val viewModel: ReminderViewModel by viewModels()
 
-  private val viewModel: ReminderViewModel by viewModels()
+   override fun onCreateView(
+           inflater: LayoutInflater, container: ViewGroup?,
+           savedInstanceState: Bundle?
+   ): View? {
+      _binding = FragmentRemindersBinding.inflate(inflater, container, false)
+      return binding.root
+   }
 
-  override fun onCreateView(..) {
-    ..
-  }
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
+      initViews()
+      observeAddReminderResult()
+      //reminderRepository = ReminderRepository(requireContext())
+      //getRemindersFromDatabase()
+   }
+   /*private fun getRemindersFromDatabase() {
+       CoroutineScope(Dispatchers.Main).launch {
+           val localReminders = withContext(Dispatchers.IO) {
+               reminderRepository.getAllReminders()
+           }
+           this@RemindersFragment.reminders.clear()
+           this@RemindersFragment.reminders.addAll(localReminders)
+           reminderAdapter.notifyDataSetChanged()
+       }
+   }*/
+   private fun initViews() {
+      // Initialize the recycler view with a linear layout manager, adapter
+      binding.rvReminders.layoutManager =
+              LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+      binding.rvReminders.adapter = reminderAdapter
+      createItemTouchHelper().attachToRecyclerView(binding.rvReminders)
+   }
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-
-//    reminderRepository = ReminderRepository(requireContext())
-//    getRemindersFromDatabase()
-
-    initRv()
-    observeAddReminderResult()
-  }
-
-
-  private fun initRv() {
-
-    reminderAdapter = ReminderAdapter(reminders)
-    viewManager = LinearLayoutManager(activity)
-
-    createItemTouchHelper().attachToRecyclerView(rvReminder)
-
-    rvReminder.apply {
-      setHasFixedSize(true)
-      layoutManager = viewManager
-      adapter = reminderAdapter
-    }
-  }
-
-  private fun observeAddReminderResult() {
-    viewModel.reminders.observe(viewLifecycleOwner, Observer { reminders ->
-      this@RemindersFragment.reminders.clear()
-      this@RemindersFragment.reminders.addAll(reminders)
-      reminderAdapter.notifyDataSetChanged()
-    })
-  }    
-//  private fun observeAddReminderResult() {
-//            setFragmentResultListener(REQ_REMINDER_KEY) { key, bundle ->
-//                bundle.getString(BUNDLE_REMINDER_KEY)?.let {
-//                    val reminder = Reminder(it)
-//
-//                    CoroutineScope(Dispatchers.Main).launch {
-//                        withContext(Dispatchers.IO) {
-//                            reminderRepository.insertReminder(reminder)
-//                        }
-//                        getRemindersFromDatabase()
-//                    }
-//                } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
-//
-//            }
-//        }
-
-
-//    private fun getRemindersFromDatabase() {
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val reminders = withContext(Dispatchers.IO) {
-//                reminderRepository.getAllReminders()
-//            }
-//            this@MainActivity.reminders.clear()
-//            this@MainActivity.reminders.addAll(reminders)
-//            reminderAdapter.notifyDataSetChanged()
-//        }
-//    }
-
-    /**
-     * Create a touch helper to recognize when a user swipes an item from a recycler view.
-     * An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
-     * and uses callbacks to signal when a user is performing these actions.
-     */
-    private fun createItemTouchHelper(): ItemTouchHelper {
+   override fun onDestroyView() {
+      super.onDestroyView()
+      _binding = null
+   }
+   /**
+    * Create a touch helper to recognize when a user swipes an item from a recycler view.
+    * An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
+    * and uses callbacks to signal when a user is performing these actions.
+    */
+   private fun createItemTouchHelper(): ItemTouchHelper {
 
       // Callback which is used to create the ItemTouch helper. Only enables left swipe.
       // Use ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) to also enable right swipe.
       val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
-        // Enables or Disables the ability to move items up and down.
-        override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-        ): Boolean {
-          return false
-        }
+         // Enables or Disables the ability to move items up and down.
+         override fun onMove(
+                 recyclerView: RecyclerView,
+                 viewHolder: RecyclerView.ViewHolder,
+                 target: RecyclerView.ViewHolder
+         ): Boolean {
+            return false
+         }
 
-        // Callback triggered when a user swiped an item.
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-          val position = viewHolder.adapterPosition
-          val reminderToDelete = reminders[position]
-
-//                CoroutineScope(Dispatchers.Main).launch {
-//                    withContext(Dispatchers.IO) {
-//                        reminderRepository.deleteReminder(reminderToDelete)
-//                    }
-//                    getRemindersFromDatabase()
-//                }
-          viewModel.deleteReminder(reminderToDelete)
-        }
+         // Callback triggered when a user swiped an item.
+         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.adapterPosition
+            //  reminders.removeAt(position)
+            // reminderAdapter.notifyDataSetChanged()
+            val reminderToDelete = reminders[position]
+            /*CoroutineScope(Dispatchers.Main).launch {
+                withContext(Dispatchers.IO) {
+                    reminderRepository.deleteReminder(reminderToDelete)
+                }
+                getRemindersFromDatabase()
+            }*/
+            viewModel.deleteReminder(reminderToDelete)
+         }
       }
       return ItemTouchHelper(callback)
-    }
-
-  }
+   }
+   private fun observeAddReminderResult() {
+      viewModel.reminders.observe(viewLifecycleOwner, Observer { reminders ->
+         this@RemindersFragment.reminders.clear()
+         this@RemindersFragment.reminders.addAll(reminders)
+         reminderAdapter.notifyDataSetChanged()
+      })
+   }
+   /*private fun observeAddReminderResult() {
+       setFragmentResultListener(REQ_REMINDER_KEY) { _, bundle ->
+           bundle.getString(BUNDLE_REMINDER_KEY)?.let {
+               val reminder = Reminder(it)
+            //   reminders.add(reminder)
+             //  reminderAdapter.notifyDataSetChanged()
+               CoroutineScope(Dispatchers.Main).launch {
+                   withContext(Dispatchers.IO) {
+                       reminderRepository.insertReminder(reminder)
+                   }
+                   getRemindersFromDatabase()
+               }
+           } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
+       }
+   }*/
+}
 ```
 
 In short four things were changed. Let’s summarize them:
@@ -282,34 +277,56 @@ will be updated straight away. When we navigate back we always have the latest d
 It doesn’t matter where it’s modified, as long as it goes through the viewmodel.
 
 ```kotlin
-//const val BUNDLE_REMINDER_KEY = "bundle_reminder"
 //const val REQ_REMINDER_KEY = "req_reminder"
+//const val BUNDLE_REMINDER_KEY = "bundle_reminder"
 
 class AddReminderFragment : Fragment() {
 
-  private val viewModel: ReminderViewModel by viewModels()
+    private var _binding: FragmentAddReminderBinding? = null
+    private val binding get() = _binding!!
 
+    private val viewModel: ReminderViewModel by viewModels()
 
-  private fun onAddReminder() {
-    val reminderText = tilReminderText.text.toString()
-
-    if (reminderText.isNotBlank()) {
-
-      //setFragmentResult(REQ_REMINDER_KEY, bundleOf(Pair(BUNDLE_REMINDER_KEY, reminderText)))
-      viewModel.insertReminder(Reminder(reminderText))
-      //"pop" the backstack, this means we destroy this fragment and go back to the RemindersFragment
-      findNavController().popBackStack()
-
-    } else {
-      Toast.makeText(
-              activity,
-              R.string.not_valid_reminder, Toast.LENGTH_SHORT
-      ).show()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentAddReminderBinding.inflate(inflater, container, false)
+        return binding.root
     }
-  }
-  ..
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnAddReminder.setOnClickListener {
+            onAddReminder()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun onAddReminder() {
+        val reminderText = binding.etReminderName.text.toString()
+
+        if (reminderText.isNotBlank()) {
+            //set the data as fragmentResult, we are listening for REQ_REMINDER_KEY in RemindersFragment!
+           // setFragmentResult(REQ_REMINDER_KEY, bundleOf(Pair(BUNDLE_REMINDER_KEY, reminderText)))
+            viewModel.insertReminder(Reminder(reminderText))
+            //"pop" the backstack, this means we destroy
+            //this fragment and go back to the RemindersFragment
+            findNavController().popBackStack()
+
+        } else {
+            Toast.makeText(
+                activity,
+                R.string.not_valid_reminder, Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 }
-```
 
 Positive
 : All done Run the app and push to your GitLab Repository
