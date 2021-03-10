@@ -13,7 +13,9 @@ analytics account: UA-180951198-1
 
 ### Requirements
 
-We will be building an app which acts as a notepad in which you write down notes. The following new subjects will be covered in this learning task:
+We will be building an app which acts as a notepad in which you write down notes. Actually this version would not be
+a particularly useful notepad because, as you might notice from the image of the app running, it only shows one note.  
+When you save a note, it over-writes the existing note.  The following new subjects will be covered in this learning task:
 - Architecture Components (ViewModel, LiveData)
 - Room type converters
 - Room pre-populate database
