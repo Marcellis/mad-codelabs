@@ -19,7 +19,7 @@ We need to build an app to make up a list of places.
 
 ### Solution
 
-If you encounter problems you can always check [Marcellis/MadLevel2Task1](https://github.com/Marcellis/Madlevel2task1) for the whole solution.
+If you encounter problems you can always check the [solution](https://gitlab.fdmci.hva.nl/android-app-development1/february-2021/ian_bradford/madlevel2task1) for the whole solution.
 
 ### Setup a new project
 
@@ -51,82 +51,53 @@ This class will be the data model for each object that will be shown in the Recy
 The `imageResId` has been annotated with `@DrawableRes` which indicates to Android 
 we expect this variable to be a Drawable Resource Id.
 
-Add two static arrays using a companion object. The arrays should contain the names of the places and the drawable resources for those places.
+Create an array of Place objects.
 
 ``` kotlin
-data class Place(
-   var name: String,
-   @DrawableRes var imageResId: Int
-) {
-   companion object {
-       val PLACE_NAMES = arrayOf(
-           "Amsterdam Dam",
-           "Amsterdam Weesperplein",
-           "Rotterdam Euromast",
-           "Den Haag Binnenhof",
-           "Utrecht Dom",
-           "Groningen Martinitoren",
-           "Maastricht Vrijthof",
-           "New York Vrijheidsbeeld",
-           "San Francisco Golden Gate",
-           "Yellowstone Old Faithful",
-           "Yosemite Half Dome",
-           "Washington White House",
-           "Ottawa Parliament Hill",
-           "Londen Tower Bridge",
-           "Brussel Manneken Pis",
-           "Berlijn Reichstag",
-           "Parijs Eiffeltoren",
-           "Barcelona Sagrada Familia",
-           "Rome Colosseum",
-           "Pompeii",
-           "Kopenhagen",
-           "Oslo",
-           "Stockholm",
-           "Helsinki",
-           "Moskou Rode Plein",
-           "Beijing Verboden Stad",
-           "Kaapstad Tafelberg",
-           "Rio de Janeiro Copacabana",
-           "Sydney Opera",
-           "Hawaii Honolulu",
-           "Alaska Denali"
-       )
 
-       val PLACE_RES_DRAWABLE_IDS = arrayOf(
-           R.drawable.amsterdam_dam,
-           R.drawable.amsterdam_weesperplein,
-           R.drawable.rotterdam_euromast,
-           R.drawable.den_haag_binnenhof,
-           R.drawable.utrecht_dom,
-           R.drawable.groningen_martinitoren,
-           R.drawable.maastricht_vrijthof,
-           R.drawable.new_york_vrijheidsbeeld,
-           R.drawable.san_francisco_golden_gate,
-           R.drawable.yellowstone_old_faithful,
-           R.drawable.yosemite_half_dome,
-           R.drawable.washington_white_house,
-           R.drawable.ottawa_parliament_hill,
-           R.drawable.london_tower_bridge,
-           R.drawable.brussel_manneken_pis,
-           R.drawable.berlijn_reichstag,
-           R.drawable.parijs_eiffeltoren,
-           R.drawable.barcelona_sagrada_familia,
-           R.drawable.rome_colosseum,
-           R.drawable.pompeii,
-           R.drawable.kopenhagen,
-           R.drawable.oslo,
-           R.drawable.stockholm,
-           R.drawable.helsinki,
-           R.drawable.moskou_rode_plein,
-           R.drawable.beijing_verboden_stad,
-           R.drawable.kaapstad_tafelberg,
-           R.drawable.rio_de_janeiro_copacabana,
-           R.drawable.sydney_opera,
-           R.drawable.hawaii,
-           R.drawable.alaska_denali
-       )
-   }
+data class Place(
+    var name: String,
+    @DrawableRes var imageResId: Int
+) {
+    companion object {
+
+        val PLACES = arrayOf(
+        Place("Amsterdam Dam",R.drawable.amsterdam_dam),
+        Place("Amsterdam Weesperplein",R.drawable.amsterdam_weesperplein),
+        Place("Rotterdam Euromast",R.drawable.rotterdam_euromast),
+        Place("Den Haag Binnenhof",R.drawable.den_haag_binnenhof),
+        Place("Utrecht Dom",R.drawable.utrecht_dom),
+        Place("Groningen Martinitoren",R.drawable.groningen_martinitoren),
+        Place("Maastricht Vrijthof",R.drawable.maastricht_vrijthof),
+        Place("New York Vrijheidsbeeld",R.drawable.new_york_vrijheidsbeeld),
+        Place("San Francisco Golden Gate",R.drawable.san_francisco_golden_gate),
+        Place("Yellowstone Old Faithful",R.drawable.yellowstone_old_faithful),
+        Place("Yosemite Half Dome",R.drawable.yosemite_half_dome),
+        Place("Washington White House",R.drawable.washington_white_house),
+        Place("Ottawa Parliament Hill",R.drawable.ottawa_parliament_hill),
+        Place("Londen Tower Bridge",R.drawable.london_tower_bridge),
+        Place("Brussel Manneken Pis",R.drawable.brussel_manneken_pis),
+        Place("Berlijn Reichstag",R.drawable.berlijn_reichstag),
+        Place("Parijs Eiffeltoren",R.drawable.parijs_eiffeltoren),
+        Place("Barcelona Sagrada Familia",R.drawable.barcelona_sagrada_familia),
+        Place("Rome Colosseum",R.drawable.rome_colosseum),
+        Place("Pompeii",R.drawable.pompeii),
+        Place("Kopenhagen",R.drawable.kopenhagen),
+        Place("Oslo",R.drawable.oslo),
+        Place("Stockholm",R.drawable.stockholm),
+        Place("Helsinki",R.drawable.helsinki),
+        Place("Moskou Rode Plein",R.drawable.moskou_rode_plein),
+        Place("Beijing Verboden Stad",R.drawable.beijing_verboden_stad),
+        Place("Kaapstad Tafelberg",R.drawable.kaapstad_tafelberg),
+        Place("Rio de Janeiro Copacabana",R.drawable.rio_de_janeiro_copacabana),
+        Place("Sydney Opera",R.drawable.sydney_opera),
+        Place("Hawaii Honolulu",R.drawable.hawaii),
+        Place("Alaska Denali",R.drawable.alaska_denali)
+
+
+        )
+    }
+
 }
 ```
 Positive
@@ -185,21 +156,17 @@ The ImageView has the property `android:scaleType=”centerCrop”` for better v
 ## Setting up the MainActivity
 
 The last thing we need to do before we can run our app is to wire the adapter to the RecyclerView in the MainActivity.
-- Create and initialize a `ArrayList` of Place object and a PlaceAdapter
+- Create and initialize an `ArrayList` of Place objects and a PlaceAdapter
 - Create a method called `initViews` and call it in the onCreate of the MainActivity
 - In initViews set the layout manager (StaggeredGridLayoutManager) and adapter of the RecyclerView. 
 
 Populate the places list and notify the data set has changed using the next code:
 
 ```kotlin 
-  for (i in Place.PLACE_NAMES.indices) {
-        places.add(Place(Place.PLACE_NAMES[i],        
-        Place.PLACE_RES_DRAWABLE_IDS[i]))
-  }
+  places.addAll(Place.PLACES)
   placeAdapter.notifyDataSetChanged()
 ```
 
-The `places` list will be initialized using a for-loop over the `PLACE_NAMES` array. 
 After the `ArrayList` has been populated the adapter will be notified(`notifyDataSetChanged()`) that the data set has been changed.
 
 For more information on Kotlin for-loops please reference the following [link](https://kotlinlang.org/docs/reference/control-flow.html#for-loops)
