@@ -137,13 +137,14 @@ Then you can reference a key from this file like this: `R.string.giraffe`.
 ### Enable view binding
 
 The first two levels in this course make use of View Binding. To enable View Binding in the project, 
-change the following in the `app/build.gradle` file.
+change the following in the `app/build.gradle` file.  Note that in the instruction video the code shows 
+`viewbinding = true`.  Both work, but the correct one, the one shown in the Android documentation is the one shown below. 
 
 ```bash
 android {
     ...
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
 }
 
