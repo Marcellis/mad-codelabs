@@ -27,7 +27,7 @@ In this course you will find the necessary steps to build this app. If you encou
 
 We’ll start this tutorial by creating a new Android Studio project.
 - Select ‘Basic Activity’.
-- Name the application ‘MadLevel3Task1’.
+- Name the application ‘MadLevel4Task1’.
 - Choose API 23.
 - Choose language ‘Kotlin’.
 - Press finish to get started.
