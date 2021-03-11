@@ -20,6 +20,7 @@ analytics account: UA-180951198-1
 We need to build an app in which you can play rock, paper, scissors with the computer. 
 The app has the following requirements:
 
+- The app must be completed using Fragments
 - Let the user select out three images to make their move (rock , paper, scissors).
 - When a user has made their move it’s visualized which move they made and which move the computer made.
 - The result (win, lose, draw) is displayed.
