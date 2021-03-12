@@ -24,7 +24,9 @@ To pass an object (`Portal`) to other Android components (in our case send the `
 Android has created an implementation of Java’s `Serializable` which is called `Parcelable`. 
 To make the Portal object `Parcelable` we will be using Kotlin’s `Parcelize` annotation. 
 
-For more information: check this [link](https://developer.android.com/kotlin/parcelize). The `kotlin-parcelize` plugin is enabled by default.
+For more information: check this [link](https://developer.android.com/kotlin/parcelize). The `kotlin-parcelize` plugin 
+should be enabled by default.  If you are having problems make sure that you have  `id kotlin-android-extensions` in your
+plugins, and it must be after `id kotlin-android'.  
 
 We can now pass the `Portal object` from one fragment using a `Bundle`. Later on within the other fragment we can do a 
 `setFragmentResultListener` and call `bundle.getParcelable<Portal>()`.
