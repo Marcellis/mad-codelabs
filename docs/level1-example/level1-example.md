@@ -81,7 +81,7 @@ app:layout_constraintRight_toRightOf="parent"
 app:layout_constraintTop_toTopOf="parent"
 ```
 
-You can constrain the top, bottom, left, and right of a view to the top, bottom, left, and right of 
+You can constrain the top, bottom, left and right of a view to the top, bottom, left and right of 
 widgets in a so called `ConstraintLayout`.
 
 Then try to constrain the `TextView` so that it is positioned like the screenshot we saw earlier
