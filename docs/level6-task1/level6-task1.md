@@ -45,7 +45,7 @@ so you can remove the `SecondFragment` with the associated navigation and layout
 `app:build.gradle`
 
 ```kotlin
-apply plugin : 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 ```
 
 `app:build.gradle`
@@ -235,7 +235,7 @@ class ColorFragment : Fragment() {
     private val colors = arrayListOf<ColorItem>()
     private lateinit var colorAdapter: ColorAdapter
     private val viewModel: ColorViewModel by viewModels()
-    private var _binding: FragmentTriviaBinding? = null
+    private var _binding: FragmentColorBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -243,7 +243,7 @@ class ColorFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTriviaBinding.inflate(inflater, container, false)
+        _binding = FragmentColorBinding.inflate(inflater, container, false)
 
         return binding.root
     }
