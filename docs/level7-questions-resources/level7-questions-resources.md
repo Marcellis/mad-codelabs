@@ -13,25 +13,25 @@ analytics account: UA-180951198-1
 
 ### Questions
 
-- What is a fragment?
-- What are the benefits of fragments?
-- What is the purpose of the FragmentManager?
-- Why is FragmentManager not used in the level 7 example?
+- What is Firebase used for?
+- What are the two options given by Google for connection your app to Firebase?
+- What special precautions are required with regard to supplying package names for Firebase?
+- What is the relationship between Firebase projects and Google Cloud?
+- How can a button be made unclickable and greyed out?
+- When using a splash screen in Fragments, what special precaution should be taken regarding the backstack?
 
 ### Resources
 
-**Fragments**
+**Firebase**
 
-[Creating and Using Fragments](https://github.com/codepath/android_guides/wiki/Creating-and-Using-Fragments)
+[Android Developers Firebase](https://developer.android.com/studio/write/firebase)
 
-[Fragments](https://developer.android.com/guide/fragments)
+[The official Firebase portal](https://firebase.google.com/)
 
-[Create swipe views with tabs using ViewPager](https://developer.android.com/guide/navigation/navigation-swipe-view)
+[Firebase and Google Cloud](https://firebase.google.com/firebase-and-gcp)
 
-[ViewPager with FragmentPagerAdapter](https://guides.codepath.com/android/viewpager-with-fragmentpageradapter)
 
-**Navigation Components**
 
-[Navigation](https://developer.android.com/guide/navigation)
+**Splash Screen**
 
-[Get started with the Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
+[Android Splash Screen documentation](https://developer.android.com/reference/android/window/SplashScreen)
