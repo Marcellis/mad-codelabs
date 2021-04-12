@@ -22,6 +22,12 @@ The end result will have to look something like this:
 
 <img src="assets/pic3.png" width="265" height="450"/>&emsp;&emsp;<img src="assets/pic4.png" width="265" height="450"/><br>
 
+
+Positive
+: In the example screens there are no images/texts of buildings shown. This is not so user friendly. Be creative and make sure the user does know 
+which building he or she is at. You don't have to build GPS functionalities.
+
+
 ### Requirements
 
 The app has the following requirements:
