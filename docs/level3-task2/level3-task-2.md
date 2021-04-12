@@ -12,7 +12,8 @@ analytics account: UA-180951198-1
 ## Requirements
 
 We need to build an application where you can manage all the portals (websites) you need for your study: a recyclerview 
-is used to manage this list. The other screen is responsible for adding a portal. The portals don’t currently need to be stored, 
+is used to manage this list. The other screen is responsible for adding a portal. The app should use Fragments. 
+The portals don’t currently need to be stored, 
 that is something we will learn in the next level. This is an example of how the end result should look:
 
 <img src="assets/level3task2.gif" width="265" height="450"/>
@@ -23,7 +24,9 @@ To pass an object (`Portal`) to other Android components (in our case send the `
 Android has created an implementation of Java’s `Serializable` which is called `Parcelable`. 
 To make the Portal object `Parcelable` we will be using Kotlin’s `Parcelize` annotation. 
 
-For more information: check this [link](https://developer.android.com/kotlin/parcelize). The `kotlin-parcelize` plugin is enabled by default.
+For more information: check this [link](https://developer.android.com/kotlin/parcelize). The `kotlin-parcelize` plugin 
+should be enabled by default.  If you are having problems make sure that you have  `id kotlin-android-extensions` in your
+plugins, and it must be after `id kotlin-android'.  
 
 We can now pass the `Portal object` from one fragment using a `Bundle`. Later on within the other fragment we can do a 
 `setFragmentResultListener` and call `bundle.getParcelable<Portal>()`.

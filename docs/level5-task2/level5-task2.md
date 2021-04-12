@@ -13,10 +13,10 @@ analytics account: UA-180951198-1
 
 ### What we are building
 
-// TODO add gif of finished product maybe because pic are already there :) 
+We need to create an application where you can keep track of which new games you want to play.
 
 ### Requirements
-We need to create an application where you can keep track of which new games you want to play.
+
 - The games are locally stored (Room).
 - MVVM Architecture is used using the Architecture Components (ViewModel, LiveData).
 - A game consists of a title, platform and a release date.
