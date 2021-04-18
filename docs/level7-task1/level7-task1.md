@@ -27,7 +27,7 @@ which can be selected from the image gallery on the user’s phone. The app will
 ### Solution
 
 Below you can find the necessary steps to build this app. If you encounter problems you can always check
-the [github](https://github.com/Marcellis/user-profile-kotlin) where you can find the whole solution.
+the [github](https://github.com/Marcellis/MadLevel7Task1) where you can find the whole solution.
 
 ## Prerequisites
 
