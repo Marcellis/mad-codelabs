@@ -31,6 +31,7 @@ can always check [Github](https://github.com/Marcellis/MadLevel1Task1) where you
 
 We’ll start this tutorial by creating a new Android Studio project.
 Once you have successfully downloaded and installed Android Studio you need to ‘Start a new Project’.
+
 1. Select the ‘Empty Activity’. 
 2. Name the application ‘MadLevel1Task1’.
 3. Choose API 23.
