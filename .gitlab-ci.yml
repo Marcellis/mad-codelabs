@@ -10,7 +10,6 @@ docker-build:
   stage: build
   tags:
     - docker
-    - hvarunner2
   services:
     - docker:18.09.7-dind
   before_script:
