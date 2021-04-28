@@ -8,6 +8,9 @@ docker-build:
   # Use the official docker image.
   image: docker:latest
   stage: build
+  tags:
+    - docker
+    - hvarunner2
   services:
     - docker:dind
   before_script:
