@@ -169,11 +169,6 @@ Populate the places list and notify the data set has changed using the next code
 
 After the `ArrayList` has been populated the adapter will be notified(`notifyDataSetChanged()`) that the data set has been changed.
 
-For more information on Kotlin for-loops please reference the following [link](https://kotlinlang.org/docs/reference/control-flow.html#for-loops)
-
-Positive
-: Don’t forget to implement **ViewBinding** as you have done in previous assignments! 
-
 Congratulations🎉, you completed your second recyclerview application!
 
 Push the App to GitLab! 
