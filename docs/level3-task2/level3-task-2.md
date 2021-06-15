@@ -34,9 +34,6 @@ We can now pass the `Portal object` from one fragment using a `Bundle`. Later on
 Clicking on a `Student Portal` should open the portal URL using [Custom Chrome Tabs](
 https://developer.chrome.com/multidevice/android/customtabs).
 
-How to implement a `clickListener` for a recyclerview can be found [here](
-https://www.andreasjakl.com/recyclerview-kotlin-style-click-listener-android).
-
 ## Solution
 Now, you are on your own. There is no solution provided. Good Luck!
 Push the app to your GitLab Repository.
